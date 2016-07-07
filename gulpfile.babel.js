@@ -39,8 +39,23 @@ gulp.task('readme', () => {
   }
 })
 
+gulp.task('gh-pages', () => {
+  fs.readFile('./dist/index.min.js', 'utf8', fnbookmark)
+  function fnbookmark(err, data) {
+    let bookmarklet = data
+    fs.readFile('./src/index.html', 'utf8', (err, data) => {
+      let index = data
+      index = index
+                    .replace('$bookmarklet', bookmarklet)
+                    .replace('$version', packageJson.version)
+      fs.writeFile('./index.html', index)
+    })
+  }
+})
+
 gulp.task('watch', () => {
   gulp.watch('src/index.js', () => gulp.start('babel') )
   gulp.watch('dist/index.js', () => gulp.start('bookmarkletify') )
   gulp.watch('src/README.md', () => gulp.start('readme') )
+  gulp.watch('src/index.html', () => gulp.start('gh-pages') )
 })
