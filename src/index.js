@@ -1,3 +1,5 @@
+const VERSION = "$version"
+
 const hostname = location.hostname
 const path = location.pathname
 const href = location.href
@@ -5,8 +7,6 @@ const images = document.images
 
 const regex_original_image = /\/[a-z]+\d+[a-z]?x\d+[a-z]?/ // ex: url p750x750/
 const regex_path = /^\/p\//
-
-const DEBUG = true
 
 { // verify if are running in instagram site
   var regex_hostname = /instagram\.com/
@@ -38,7 +38,7 @@ if ( regex_hostname.test(hostname) ) {
         }
 
       }
-    } catch(e) { if (DEBUG) console.log(e)}
+    } catch(e) { console.error(`[instantgram] ${VERSION}`, e)}
     /*=====  End of Instagram Modal  ======*/
 
     /*======================================
@@ -46,7 +46,7 @@ if ( regex_hostname.test(hostname) ) {
     ======================================*/
     try {
       if (document.getElementsByTagName('article').length === 1) { // verify if has a image post
-        let post = document.getElementsByTagName('article')
+        let post = document.getElementsByTagName('article')[0]
         let post_image = post.children[1].firstChild.firstChild.firstChild.src
         { // bring the original image if had
           var image_link = (regex_original_image.test(post_image)) ? post_image.replace(regex_original_image, '') : post_image
@@ -56,7 +56,7 @@ if ( regex_hostname.test(hostname) ) {
       } else {
         alert ("ops, [instantgram] don't found the image :(")
       }
-    } catch(e) {if (DEBUG) console.log(e)}
+    } catch(e) {console.error(`[instantgram] ${VERSION}`, e)}
   } else {
     alert ("ops, are you in a instagram post? ex: instagram.com/p/82jd828jd")
   }

@@ -4,13 +4,15 @@ import fs from 'fs'
 import bookmarkletify from 'gulp-bookmarklet'
 import uglify from 'gulp-uglify'
 import plumber from 'gulp-plumber'
-const package = require('./package.json')
+import replace from 'gulp-replace'
+const packageJson = require('./package.json')
 
 gulp.task('default', ['babel', 'bookmarkletify', 'watch'])
 
 gulp.task('babel', () => {
   gulp.src('src/index.js')
     .pipe( plumber() )
+    .pipe ( replace('$version', packageJson.version) )
     .pipe( babel() )
     .pipe( uglify() )
     .pipe( gulp.dest('dist/') )
@@ -31,7 +33,7 @@ gulp.task('readme', () => {
       let readme = data
       readme = readme
                     .replace('$bookmarklet', bookmarklet)
-                    .replace('$version', package.version)
+                    .replace('$version', packageJson.version)
       fs.writeFile('./README.md', readme)
     })
   }
