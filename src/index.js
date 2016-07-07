@@ -51,10 +51,12 @@ if ( regex_hostname.test(hostname) ) {
         { // bring the original image if had
           var image_link = (regex_original_image.test(post_image)) ? post_image.replace(regex_original_image, '') : post_image
         }
-        // open image in new tab
-        window.open(image_link)
-      } else {
-        alert ("ops, [instantgram] don't found the image :(")
+        if (image_link) {
+          // open image in new tab
+          window.open(image_link)
+        }else{
+          alert ("ops, [instantgram] don't found the image :(")
+        }
       }
     } catch(e) {console.error(`[instantgram] ${VERSION}`, e)}
   } else {
