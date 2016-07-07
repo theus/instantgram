@@ -4,6 +4,7 @@ import fs from 'fs'
 import bookmarkletify from 'gulp-bookmarklet'
 import uglify from 'gulp-uglify'
 import plumber from 'gulp-plumber'
+const package = require('./package.json')
 
 gulp.task('default', ['babel', 'bookmarkletify', 'watch'])
 
@@ -28,7 +29,9 @@ gulp.task('readme', () => {
     let bookmarklet = data
     fs.readFile('./src/README.md', 'utf8', (err, data) => {
       let readme = data
-      readme = readme.replace('$bookmarklet', bookmarklet)
+      readme = readme
+                    .replace('$bookmarklet', bookmarklet)
+                    .replace('$version', package.version)
       fs.writeFile('./README.md', readme)
     })
   }

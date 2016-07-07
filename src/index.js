@@ -23,7 +23,7 @@ if ( regex_hostname.test(hostname) ) {
     =            Instagram Modal            =
     =======================================*/
     try {
-      if (document.getElementsByTagName('article')) { // when instagram post is a modal
+      if (document.getElementsByTagName('article').length === 2) { // when instagram post is a modal
         let modal = document.getElementsByTagName('article')[1]
         let modal_image = modal.children[1].firstChild.firstChild.firstChild.src
 
@@ -45,9 +45,11 @@ if ( regex_hostname.test(hostname) ) {
     =            Instagram Post            =
     ======================================*/
     try {
-      if (pImage_0) { // verify if has a image post
+      if (document.getElementsByTagName('article').length === 1) { // verify if has a image post
+        let post = document.getElementsByTagName('article')
+        let post_image = post.children[1].firstChild.firstChild.firstChild.src
         { // bring the original image if had
-          var image_link = (regex_original_image.test(pImage_0.src)) ? pImage_0.src.replace(regex_original_image, '') : pImage_0.src
+          var image_link = (regex_original_image.test(post_image)) ? post_image.replace(regex_original_image, '') : post_image
         }
         // open image in new tab
         window.open(image_link)
