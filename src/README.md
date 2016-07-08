@@ -8,6 +8,8 @@
 
 ## Roadmap
 
-- a way of notify updates in [instantgram]
+- ~~a way of notify updates in [instantgram]~~ :heavy_check_mark: in v2.0.0
+
+After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may using a version before v2.0.0.
 
 [1]:http://theus.github.io/instantgram

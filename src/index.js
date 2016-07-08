@@ -1,3 +1,5 @@
+import update from './modules/update.js'
+
 const VERSION = "$version"
 
 const hostname = location.hostname
@@ -25,14 +27,14 @@ if ( regex_hostname.test(hostname) ) {
     try {
       if (document.getElementsByTagName('article').length === 2) { // when instagram post is a modal
         let modal = document.getElementsByTagName('article')[1]
-        let modal_image = modal.children[1].firstChild.firstChild.firstChild.src
+        let modal_image = document.querySelector("article > div img").src
 
         if (modal_image) {// verify if finds a post image
           { // bring the original image if had
           var image_link = (regex_original_image.test(modal_image)) ? modal_image.replace(regex_original_image, '') : modal_image
           }
           // open image in new tab
-          window.open(modal_image)
+          window.open(image_link)
         }else{
           alert("[instantgram] don't found a image in instagram post. Try open the link in new tab.")
         }
@@ -47,7 +49,7 @@ if ( regex_hostname.test(hostname) ) {
     try {
       if (document.getElementsByTagName('article').length === 1) { // verify if has a image post
         let post = document.getElementsByTagName('article')[0]
-        let post_image = post.children[1].firstChild.firstChild.firstChild.src
+        let post_image = document.querySelector("article > div img").src
         { // bring the original image if had
           var image_link = (regex_original_image.test(post_image)) ? post_image.replace(regex_original_image, '') : post_image
         }
@@ -63,5 +65,6 @@ if ( regex_hostname.test(hostname) ) {
     alert ("ops, are you in a instagram post? ex: instagram.com/p/82jd828jd")
   }
   /*=====  End of Instagram Post  ======*/
+  update()
 }
 /*=====  End of Program  ======*/
