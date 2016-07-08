@@ -6,6 +6,16 @@
 
 ### [:arrow_right: Bookmarklet][1]
 
+## Compatibility
+
+|       Browser        |     Compatible?    |
+| -------------------- | -------------------|
+| Google Chrome        | :white_check_mark: |
+| Mozilla Firefox      | :white_check_mark: |
+| Internet Explorer 11 | :white_check_mark: |
+| Edge*                | :warning:          |
+*_aparently Edge don't allow drag a button to bookmark bar_
+
 ## Roadmap
 
 - ~~a way of notify updates in [instantgram]~~ :heavy_check_mark: in v2.0.0
