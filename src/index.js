@@ -27,7 +27,7 @@ if ( regex_hostname.test(hostname) ) {
     try {
       if (document.getElementsByTagName('article').length === 2) { // when instagram post is a modal
         let modal = document.getElementsByTagName('article')[1]
-        let modal_image = document.querySelector("article > div img").src
+        let modal_image = modal.querySelector("header + div img").src
 
         if (modal_image) {// verify if finds a post image
           { // bring the original image if had
