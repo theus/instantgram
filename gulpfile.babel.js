@@ -10,6 +10,7 @@ import rollBabel from 'rollup-plugin-babel'
 const packageJson = require('./package.json')
 
 gulp.task('default', ['rollup', 'bookmarkletify', 'gh-pages', 'readme', 'watch'])
+gulp.task('build', ['rollup', 'bookmarkletify', 'gh-pages', 'readme'])
 
 gulp.task('rollup', () => {
   rollup({
