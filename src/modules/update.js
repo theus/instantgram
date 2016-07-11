@@ -23,8 +23,7 @@ function determineIfGetUpdateIsNecessary() {
   }
 }
 
-function update() {
-  let v = "$version"
+function update(v) {
   let vNumber = v.replace(/\./g, "")
   vNumber = parseInt(vNumber)
 

@@ -1,4 +1,5 @@
 import update from './modules/update.js'
+import isElementInViewport from './helpers/isElementInViewport.js'
 
 const VERSION = "$version"
 
@@ -9,6 +10,7 @@ const images = document.images
 
 const regex_original_image = /\/[a-z]+\d+[a-z]?x\d+[a-z]?/ // ex: url p750x750/
 const regex_path = /^\/p\//
+const regex_image_id = /pImage_\d+/
 
 { // verify if are running in instagram site
   var regex_hostname = /instagram\.com/
@@ -61,10 +63,41 @@ if ( regex_hostname.test(hostname) ) {
         }
       }
     } catch(e) {console.error(`[instantgram] ${VERSION}`, e)}
+    /*=====  End of Instagram Post  ======*/
   } else {
-    alert ("ops, are you in a instagram post? ex: instagram.com/p/82jd828jd")
+    var alertNotInInstagramPost = true
   }
-  /*=====  End of Instagram Post  ======*/
-  update()
+
+  /*===============================================
+  =            Image visible in screen            =
+  ===============================================*/
+  try {
+    if (!image_link) { // verify if already found a image
+      search: {
+        for (let image of document.images) {
+          if ( regex_image_id.test(image.id) ) { // get only images posts
+            if ( isElementInViewport(image) ) { // verify if is in viewport
+
+              { // bring the original image if had
+                var image_link = (regex_original_image.test(image.src)) ? image.src.replace(regex_original_image, '') : image.src
+              }
+              if (image_link) {
+                // open image in new tab
+                window.open(image_link)
+              }else{
+                alert("[instantgram] the search in screen found more than 1 image. Are you in a profile? If yes, open a photo before run [instantgram]")
+              }
+              alertNotInInstagramPost = false // if don't find nothing, alert to open the post
+              break search // if found the image stop searching
+            }
+          }
+        }
+      }
+    }
+  } catch(e) { console.error(`[instantgram] ${VERSION}`, e) }
+  /*=====  End of Image visible in screen  ======*/
+
+  if (alertNotInInstagramPost) alert ("ops, are you in a instagram post? ex: instagram.com/p/82jd828jd")
+  update(VERSION)
 }
 /*=====  End of Program  ======*/
