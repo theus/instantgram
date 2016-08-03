@@ -6,6 +6,8 @@
 
 ### [:arrow_right: Bookmarklet][1]
 
+![gif demo](img/demo.gif)
+
 :bulb: Now in version 2.1.0, [instantgram] can search images in screen. So, if you scrolling by your timeline, pause the scroll on image that you want and click in [instantgram]. Should work.
 
 ## Compatibility
@@ -21,7 +23,8 @@
 ## Roadmap
 
 - ~~a way of notify updates in [instantgram]~~ :heavy_check_mark: in v2.0.0
-- make a gif explaining the [instantgram]
+- ~~make a gif explaining the [instantgram]~~ :heavy_check_mark:
+- video :smirk_cat:
 
 After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may using a version before v2.0.0.
 
