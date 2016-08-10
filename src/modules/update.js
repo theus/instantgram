@@ -1,6 +1,8 @@
+import localize from '../helpers/localize.js'
+
 function outdated(data) {
-  console.warn("[instantgram] is outdated. Please go to http://theus.github.io/instantgram to update")
-  console.warn(`[instantgram] local version: ${data.version} | new update: ${data.gitVersion}`)
+  console.warn(localize('modules.update@oudated_outdated'))
+  console.warn(localize('modules.update@oudated_localInfo').replace('${data.version}', data.version).replace('${data.gitVersion}', data.gitVersion))
 }
 
 function determineIfGetUpdateIsNecessary() {
@@ -30,7 +32,7 @@ function update(v) {
   if ( determineIfGetUpdateIsNecessary() ) {
     let xhr = new XMLHttpRequest()
     xhr.addEventListener("readystatechange", function () {
-    console.info("[instantgram] is contacting server looking for updates...")
+    console.info(localize('modules.update@determineIfGetUpdateIsNecessary_contacting'))
 
       if (this.readyState === 4) {
         let limitDate = new Date()
@@ -48,12 +50,12 @@ function update(v) {
         gitV = gitV.replace(/\./g, "")
         gitV = parseInt(gitV)
 
-        console.info("[instantgram] updated local data")
+        console.info(localize('modules.update@determineIfGetUpdateIsNecessary_updated'))
 
         // if git had a update, notify in console and a alert
         if (vNumber < gitV) {
           var data = JSON.parse(localStorage.getItem('instantgram'))
-          alert ('[instantgram] found a update.\n please go to theus.github.io/instantgram for update')
+          alert (localize('modules.update@determineIfGetUpdateIsNecessary_@alert_found'))
           outdated(data)
         }else {
           console.info(localStorage.getItem('instantgram'))

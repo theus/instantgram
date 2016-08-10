@@ -30,6 +30,8 @@ gulp.task('rollup', () => {
 
 })
 
+gulp.task('js', ['uglify'])
+
 gulp.task('uglify',['rollup'], () => {
    return gulp.src('dist/index.js')
     .pipe( plumber() )

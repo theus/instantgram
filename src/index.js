@@ -1,3 +1,4 @@
+import localize from './helpers/localize.js'
 import update from './modules/update.js'
 import isElementInViewport from './helpers/isElementInViewport.js'
 
@@ -14,7 +15,7 @@ const regex_image_id = /pImage_\d+/
 
 { // verify if are running in instagram site
   var regex_hostname = /instagram\.com/
-  if ( !regex_hostname.test(hostname) ) alert("[instantgram] only works in instagram.com")
+  if ( !regex_hostname.test(hostname) ) alert(localize('index@alert_onlyWorks'))
 }
 
 /*===============================
@@ -65,7 +66,7 @@ if ( regex_hostname.test(hostname) ) {
             // open image in new tab
             window.open(image_link)
           }else{
-            alert("[instantgram] don't found a image in instagram post. Try open the link in new tab.")
+            alert(localize('index#program#modal@alert_dontFound'))
           }
 
         }
@@ -86,7 +87,7 @@ if ( regex_hostname.test(hostname) ) {
             // open image in new tab
             window.open(image_link)
           }else{
-            alert ("ops, [instantgram] don't found the image :(")
+            alert(localize('index#program#post@alert_dontFound'))
           }
         }
       } catch(e) {console.error(`[instantgram] ${VERSION}`, e)}
@@ -113,7 +114,7 @@ if ( regex_hostname.test(hostname) ) {
                 // open image in new tab
                 window.open(image_link)
               }else{
-                alert("[instantgram] the search in screen found more than 1 image. Are you in a profile? If yes, open a photo before run [instantgram]")
+                alert(localize('index#program#screen@alert_dontFound'))
               }
               alertNotInInstagramPost = false // if don't find nothing, alert to open the post
               break search // if found the image stop searching
@@ -125,7 +126,7 @@ if ( regex_hostname.test(hostname) ) {
   } catch(e) { console.error(`[instantgram] ${VERSION}`, e) }
   /*=====  End of Image visible in screen  ======*/
 
-  if (alertNotInInstagramPost && !foundVideo) alert ("ops, are you in a instagram post? ex: instagram.com/p/82jd828jd")
+  if (alertNotInInstagramPost && !foundVideo) alert(localize('index#program@alert_dontFound'))
   update(VERSION)
 }
 /*=====  End of Program  ======*/
