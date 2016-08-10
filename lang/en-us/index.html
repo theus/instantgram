@@ -85,7 +85,7 @@
     var defaultLang = "en-US";
     for (var i = switchesLang.length - 1; i >= 0; i--) {
       var lang = switchesLang[i].dataset.lang;
-      var regex = new RegExp(lang, "g");
+      var regex = new RegExp(lang.toLowerCase(), "g");
       if (regex.test(location.pathname)) defaultLang = lang;
     }
     document.querySelector("[data-lang='"+defaultLang+"'] span").style.textDecoration = "underline";

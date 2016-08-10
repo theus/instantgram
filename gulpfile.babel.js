@@ -6,6 +6,7 @@ import plumber from 'gulp-plumber'
 import replace from 'gulp-replace'
 import { rollup } from 'rollup';
 import rollBabel from 'rollup-plugin-babel'
+import babelrc from 'babelrc-rollup'
 import { exec } from 'child_process'
 import bookmarkletify from 'bookmarkletify'
 
@@ -18,10 +19,7 @@ gulp.task('rollup', () => {
   return rollup({
     entry: 'src/index.js',
     plugins: [
-      rollBabel({
-        babelrc: false,
-        presets: ["es2015-rollup"]
-      })
+      rollBabel(babelrc())
     ],
   }).then(function (bundle) {
     return bundle.write({
@@ -59,6 +57,7 @@ gulp.task('bookmarkletify', ['uglify'], (done) => {
    let bookmarklet = bookmarkletify(js);
    fs.writeFileSync('./dist/index.min.js', bookmarklet)
   } finally {
+    exec('npm run metalsmith')
     done()
   }
 })
@@ -75,9 +74,8 @@ gulp.task('gh-pages',['bookmarkletify'], (done) => {
     fs.readFile('./dist/index.min.js', 'utf8', cb)
     function cb(err, data){
       let bookmarklet = data
-      let index = fs.readFileSync('./src/index.html', 'utf8')
-      let new_index = index.replace('$bookmarklet', bookmarklet).replace(/\$version/g, packageJson.version)
-      fs.writeFile('./index.html', new_index)
+      let partial = `<a href="${bookmarklet}" class="btn" style="cursor: move;">[instantgram]</a>`
+      fs.writeFile('./src/_langs/partials/button.html', partial)
     }
   } finally {
     done()
