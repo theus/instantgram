@@ -9,7 +9,7 @@ const define = require('metalsmith-define')
 
 // data
 const langs = require('./langs.json')
-const package = require('../../package.json')
+const jsonpkg = require('../../package.json')
 
 // handlebars helpers
 Handlebars.registerHelper('to_lowercase', str => str.toLowerCase())
@@ -17,7 +17,7 @@ Handlebars.registerHelper('to_lowercase', str => str.toLowerCase())
 Metalsmith(__dirname)
   .use(define({
     'langs': langs,
-    'version': package.version
+    'version': jsonpkg.version
   }))
   .use(layouts({
     'engine': 'handlebars',
@@ -29,7 +29,7 @@ Metalsmith(__dirname)
   }))
   .use(permalinks(':lang/'))
   .destination('../../lang')
-  .build(function(err) {
+  .build(function (err) {
     if (err) throw err
   })
 
@@ -37,5 +37,5 @@ var source = fs.createReadStream('./lang/en-us/index.html')
 var dest = fs.createWriteStream('./index.html')
 
 source.pipe(dest)
-source.on('end', function() { console.log('build complete') })
-source.on('error', function(err) { if (err) throw err })
+source.on('end', function () { console.log('build complete') })
+source.on('error', function (err) { if (err) throw err })

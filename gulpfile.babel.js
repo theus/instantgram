@@ -13,7 +13,7 @@ import bookmarkletify from 'bookmarkletify'
 const packageJson = require('./package.json')
 
 gulp.task('default', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'watch'])
-gulp.task('build', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme'])
+gulp.task('build', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'test'])
 
 gulp.task('rollup', () => {
   return rollup({
@@ -84,6 +84,8 @@ gulp.task('gh-pages',['bookmarkletify'], (done) => {
   }
 
 })
+
+gulp.task('test', () => exec('npm test'))
 
 gulp.task('watch', () => {
   gulp.watch('src/**/*.js', () => gulp.start('uglify') )

@@ -4,7 +4,9 @@
   "description": "A bookmarklet for download photos in Instagram",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
+    "test": "node .\\node_modules\\standard\\bin\\cmd.js .\\src\\**\\*.js",
+    "build": "gulp build",
     "metalsmith": "node \"src\\_langs\\metalsmith.js\""
   },
   "repository": {
@@ -31,6 +33,7 @@
     "metalsmith-layouts": "^1.6.5",
     "metalsmith-permalinks": "^0.5.0",
     "rollup": "^0.34.7",
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup-plugin-babel": "^2.6.1",
+    "standard": "^7.1.2"
   }
 }
