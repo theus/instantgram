@@ -15,7 +15,7 @@ const packageJson = require('./package.json')
 gulp.task('default', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'watch'])
 gulp.task('build', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'test'])
 
-gulp.task('rollup', () => {
+gulp.task('rollup', ['clean'], () => {
   return rollup({
     entry: 'src/index.js',
     plugins: [
@@ -32,7 +32,7 @@ gulp.task('rollup', () => {
 
 gulp.task('js', ['uglify'])
 
-gulp.task('uglify',['rollup'], () => {
+gulp.task('uglify', ['rollup'], () => {
    return gulp.src('dist/index.js')
     .pipe( plumber() )
     .pipe( replace(/\$version/g, packageJson.version) )
@@ -71,7 +71,7 @@ gulp.task('readme', () => {
     .pipe( gulp.dest('./') )
 })
 
-gulp.task('gh-pages',['bookmarkletify'], (done) => {
+gulp.task('gh-pages', ['bookmarkletify'], (done) => {
   try {
     fs.readFile('./dist/index.min.js', 'utf8', cb)
     function cb(err, data){

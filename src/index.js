@@ -10,7 +10,6 @@ const videos = document.querySelectorAll('video')
 
 const regexOriginalImage = /\/[a-z]+\d+[a-z]?x\d+[a-z]?/ // ex: url p750x750/
 const regexPath = /^\/p\//
-const regexImageID = /pImage_\d+/
 const regexHostname = /instagram\.com/
 
 // verify if are running in instagram site
@@ -21,6 +20,7 @@ if (!regexHostname.test(hostname)) window.alert(localize('index@alert_onlyWorks'
 ===============================*/
 if (regexHostname.test(hostname)) {
   var foundVideo = false
+  var foundImage = false
   /* ===============================================
   =            Video visible in screen            =
   ===============================================*/
@@ -45,8 +45,37 @@ if (regexHostname.test(hostname)) {
   } catch (e) { console.error(`[instantgram] ${VERSION}`, e) }
   /* =====  End of Video visible in screen  ======*/
 
-  if (regexPath.test(path)) { // verify if are in instagram post
-    if (!foundVideo) { // if not find a video, search images
+  /* ===============================================
+  =            Image visible in screen            =
+  ===============================================*/
+  try {
+    if (!imageLink && !foundVideo) { // verify if already found a image
+      search: { // eslint-disable-line no-labels
+        for (let image of images) {
+          const isProfileImage = (image.parentElement.localName === 'a') // by default, instantgram detects profile image too. But we don't need it.
+          if (isElementInViewport(image) && !isProfileImage) { // verify if is in viewport
+            // bring the original image if had
+            imageLink = (regexOriginalImage.test(image.src)) ? image.src.replace(regexOriginalImage, '') : image.src
+
+            if (imageLink) {
+              // open image in new tab
+              window.open(imageLink)
+              foundImage = true
+            } else {
+              window.alert(localize('index#program#screen@alert_dontFound'))
+            }
+            alertNotInInstagramPost = false // if don't find nothing, alert to open the post
+            // if found the image stop searching
+            break search // eslint-disable-line no-labels
+          }
+        }
+      }
+    }
+  } catch (e) { console.error(`[instantgram] ${VERSION}`, e) }
+  /* =====  End of Image visible in screen  ======*/
+
+  if (regexPath.test(path) && !imageLink) { // verify if are in instagram post
+    if (!foundVideo && !foundImage) { // if not find a video, search images
       /* =======================================
       =            Instagram Modal            =
       =======================================*/
@@ -93,36 +122,7 @@ if (regexHostname.test(hostname)) {
     var alertNotInInstagramPost = true
   }
 
-  /* ===============================================
-  =            Image visible in screen            =
-  ===============================================*/
-  try {
-    if (!imageLink && !foundVideo) { // verify if already found a image
-      search: { // eslint-disable-line no-labels
-        for (let image of images) {
-          if (regexImageID.test(image.id)) { // get only images posts
-            if (isElementInViewport(image)) { // verify if is in viewport
-              // bring the original image if had
-              imageLink = (regexOriginalImage.test(image.src)) ? image.src.replace(regexOriginalImage, '') : image.src
-
-              if (imageLink) {
-                // open image in new tab
-                window.open(imageLink)
-              } else {
-                window.alert(localize('index#program#screen@alert_dontFound'))
-              }
-              alertNotInInstagramPost = false // if don't find nothing, alert to open the post
-              // if found the image stop searching
-              break search // eslint-disable-line no-labels
-            }
-          }
-        }
-      }
-    }
-  } catch (e) { console.error(`[instantgram] ${VERSION}`, e) }
-  /* =====  End of Image visible in screen  ======*/
-
-  if (alertNotInInstagramPost && !foundVideo) window.alert(localize('index#program@alert_dontFound'))
+  if (alertNotInInstagramPost && !foundVideo && !foundImage) window.alert(localize('index#program@alert_dontFound'))
   update(VERSION)
 }
 /* =====  End of Program  ======*/
