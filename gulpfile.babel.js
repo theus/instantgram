@@ -15,7 +15,7 @@ const packageJson = require('./package.json')
 gulp.task('default', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'watch'])
 gulp.task('build', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'test'])
 
-gulp.task('rollup', ['clean'], () => {
+gulp.task('rollup', ['clean'], (done) => {
   return rollup({
     entry: 'src/index.js',
     plugins: [
@@ -26,6 +26,8 @@ gulp.task('rollup', ['clean'], () => {
       format: 'cjs',
       dest: 'dist/index.js'
     })
+
+    done()
   })
 
 })
