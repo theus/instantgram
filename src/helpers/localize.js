@@ -1,6 +1,13 @@
 import localization from '../localization.js'
 
-const LANG_DEFAULT = navigator.language
+const LANGS_NORMALIZE = {
+  'de': 'de-DE',
+  'pt': 'pt-BR',
+  'en': 'en-US',
+  'en-GB': 'en-US'
+}
+
+const LANG_DEFAULT = LANGS_NORMALIZE[navigator.language]
 
 /**
  * @name: localize! function to return localized strings in localization.js

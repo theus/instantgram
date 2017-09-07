@@ -1,19 +1,19 @@
 export default {
   'langs': {
     'en-US': {
-      'helpers.localize_defaultlang': '[instantgram] seted language: ${LANG_DEFAULT} \nfor more information about languages supported, access http://theus.github.io/instantgram',
+      'helpers.localize_defaultlang': '[instantgram] set language: ${LANG_DEFAULT} \n For more information about available languages please check http://theus.github.io/instantgram',
 
-      'modules.update@oudated_outdated': '[instantgram] is outdated. Please go to http://theus.github.io/instantgram to update',
-      'modules.update@oudated_localInfo': '[instantgram] local version: ${data.version} | new update: ${data.gitVersion}',
-      'modules.update@determineIfGetUpdateIsNecessary_contacting': '[instantgram] is contacting server looking for updates...',
-      'modules.update@determineIfGetUpdateIsNecessary_updated': '[instantgram] updated local data',
-      'modules.update@determineIfGetUpdateIsNecessary_@alert_found': '[instantgram] found a update.\n please go to theus.github.io/instantgram for update',
+      'modules.update@oudated_outdated': '[instantgram] is outdated. Please check http://theus.github.io/instantgram for available updates.',
+      'modules.update@oudated_localInfo': '[instantgram] Installed version: ${data.version} | New update: ${data.gitVersion}',
+      'modules.update@determineIfGetUpdateIsNecessary_contacting': '[instantgram] is looking for available updates…',
+      'modules.update@determineIfGetUpdateIsNecessary_updated': '[instantgram] updated your current version.',
+      'modules.update@determineIfGetUpdateIsNecessary_@alert_found': '[instantgram] found a new available update.\nPlease check http://theus.github.io/instantgram to install it.',
 
-      'index@alert_onlyWorks': '[instantgram] only works in instagram.com',
-      'index#program#modal@alert_dontFound': "[instantgram] don't found a image in instagram post. Try open the link in new tab.",
-      'index#program#post@alert_dontFound': "ops, [instantgram] don't found the image :(",
-      'index#program#screen@alert_dontFound': '[instantgram] the search in screen found more than 1 image. Are you in a profile? If yes, open a photo before run [instantgram]',
-      'index#program@alert_dontFound': 'ops, are you in a instagram post? ex: instagram.com/p/82jd828jd'
+      'index@alert_onlyWorks': '[instantgram] only works on instagram.com.',
+      'index#program#modal@alert_dontFound': "[instangram] didn't find any image in this Instagram post. Please try to open the link in a new tab.",
+      'index#program#post@alert_dontFound': "Ops, [instantgram] couldn't find any image  :-(",
+      'index#program#screen@alert_dontFound': '[instantgram] found more than 1 image. Are you on a profile page? If yes, please open a single post first and open [instantgram] again.',
+      'index#program@alert_dontFound': 'Ops, did you open any Instagram post? Like for example instagram.com/p/82jd828jd'
     },
     'pt-BR': {
       'helpers.localize_defaultlang': '[instantgram] idioma configurado: ${LANG_DEFAULT} \npara mais informações sobre os idiomas suportados, acesse http://theus.github.io/instantgram',
@@ -29,6 +29,21 @@ export default {
       'index#program#post@alert_dontFound': 'ops, [instantgram] não encontrou a imagem :(',
       'index#program#screen@alert_dontFound': '[instantgram] a procura por imagem na tela encontrou mais de 1 imagem. Você está em um perfil? Se sim, abra alguma imagem antes de rodar o [instantgram]',
       'index#program@alert_dontFound': 'ops, você está em algum post do instagram? ex: instagram.com/p/82jd828jd'
-    }
+    },
+    'de-DE': {
+      'helpers.localize_defaultlang': 'Ausgewählte Sprache: ${LANG_DEFAULT} \n Weitere Informationen zu den unterstützten Sprachen findest du auf http://theus.github.io/instantgram',
+
+      'modules.update@oudated_outdated': '[instantgram] ist veraltet. Bitte besuche die Seite http://theus.github.io/instantgram für ein Update.',
+      'modules.update@oudated_localInfo': '[instantgram] Installierte Version ${data.version} | Neue Version: ${data.gitVersion}',
+      'modules.update@determineIfGetUpdateIsNecessary_contacting': '[instantgram] sucht nach neuen verfügbaren Updates…',
+      'modules.update@determineIfGetUpdateIsNecessary_updated': '[instantgram] wurde aktualisiert.',
+      'modules.update@determineIfGetUpdateIsNecessary_@alert_found': '[instantgram] hat ein neues Update gefunden.\nBitte besuche die Seite http://theus.github.io/instantgram, um das Update zu installieren.',
+
+      'index@alert_onlyWorks': '[instantgram] funktioniert nur mit instagram.com.',
+      'index#program#modal@alert_dontFound': "[instantgram] konnte kein Bild in diesem Post finden. Bitte öffne den Link in einem neuen Tab.",
+      'index#program#post@alert_dontFound': "Ops, [instantgram] konnte leider kein Bild finden  :-(",
+      'index#program#screen@alert_dontFound': '[instantgram] hat mehr als 1 Bild gefunden. Bist du in der Profilansicht? Falls ja, öffne bitte zuerst einen einzelnen Post und führe [instantgram] erneut aus.',
+      'index#program@alert_dontFound': 'Ops, hast du einen Instagram Post geöffnet? Zum Beispiel instagram.com/p/82jd828jd'
+    },
   }
 }
