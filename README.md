@@ -1,5 +1,5 @@
 # [instantgram]
-![version](https://img.shields.io/badge/version-2.3.4-green.svg?style=flat-square)
+![version](https://img.shields.io/badge/version-2.4.0-green.svg?style=flat-square)
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
@@ -34,6 +34,7 @@
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more informations. :heart:
 
 ## Changelog
+- v2.4.0 - [instangram] now supports Stories.
 - v2.3.0 - [instangram] now supports localization, both app and website. Initially it has en-US and pt-BR. You can help us translating [instantgram] for your language! Cool? Read [contributing](CONTRIBUTING.md) for more informations.
 - v2.2.0 - [instantgram] now supports video too! :movie_camera:
 - After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may using a version before v2.0.0.

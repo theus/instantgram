@@ -5,6 +5,7 @@ import forEach from './helpers/forEach.js'
 import searchImage from './modules/searchImage.js'
 import searchVideoOnScreen from './modules/searchVideoOnScreen.js'
 import searchImageOnScreen from './modules/searchImageOnScreen.js'
+import searchStories from './modules/searchStories.js'
 
 const program = {
   VERSION: '$version',
@@ -15,6 +16,8 @@ const program = {
   regexOriginalImage: /\/[a-z]+\d+[a-z]?x\d+[a-z]?/, // ex: url p750x750/
   regexPath: /^\/p\//,
   regexHostname: /instagram\.com/,
+  regexStoriesURI: /stories\/(.*)+/,
+  regexURL: /([--:\w?@%&+~#=]*\.[a-z]{2,4}\/{0,2})((?:[?&](?:\w+)=(?:\w+))+|[--:\w?@%&+~#=]+)?/,
 
   foundVideo: false,
   foundImage: false,
@@ -36,11 +39,13 @@ if (!program.regexHostname.test(program.hostname)) window.alert(localize('index@
 =            Program            =
 ===============================*/
 if (program.regexHostname.test(program.hostname)) {
-
-  if (searchVideoOnScreen(program) === false) {
-    if (searchImage(program) === false) {
-      if (searchImageOnScreen(program)) {
-        program.context.hasMsg = false
+  
+  if (searchStories(program) === false) {
+    if (searchVideoOnScreen(program) === false) {
+      if (searchImage(program) === false) {
+        if (searchImageOnScreen(program)) {
+          program.context.hasMsg = false
+        }
       }
     }
   }
