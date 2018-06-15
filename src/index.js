@@ -14,14 +14,26 @@ const program = {
   images: [],
   videos: document.querySelectorAll('video'),
   regexOriginalImage: /\/[a-z]+\d+[a-z]?x\d+[a-z]?/, // ex: url p750x750/
+  regexMaxResImage: /\/[a-z]+[1080]+[a-z]?x[1080]+[a-z]?/, // ex: url p1080x1080/
   regexPath: /^\/p\//,
   regexHostname: /instagram\.com/,
   regexStoriesURI: /stories\/(.*)+/,
   regexURL: /([--:\w?@%&+~#=]*\.[a-z]{2,4}\/{0,2})((?:[?&](?:\w+)=(?:\w+))+|[--:\w?@%&+~#=]+)?/,
 
+  setImageLink: function (link) {
+    this.imageLinkBeforeParse = link
+
+    if (this.regexMaxResImage.test(link)) {
+      this.imageLink = link
+    } else {
+      this.imageLink = (this.regexOriginalImage.test(link)) ? link.replace(this.regexOriginalImage, '') : link
+    }
+  },
+
   foundVideo: false,
   foundImage: false,
   imageLink: false,
+  imageLinkBeforeParse: false,
 
   alertNotInInstagramPost: false,
   context: {
@@ -39,7 +51,7 @@ if (!program.regexHostname.test(program.hostname)) window.alert(localize('index@
 =            Program            =
 ===============================*/
 if (program.regexHostname.test(program.hostname)) {
-  
+
   if (searchStories(program) === false) {
     if (searchVideoOnScreen(program) === false) {
       if (searchImage(program) === false) {

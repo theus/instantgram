@@ -16,7 +16,7 @@ gulp.task('default', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme',
 gulp.task('build', ['clean', 'uglify', 'bookmarkletify', 'gh-pages', 'readme', 'test'])
 
 gulp.task('rollup', ['clean'], (done) => {
-  return rollup({
+  rollup({
     entry: 'src/index.js',
     plugins: [
       rollBabel(babelrc())
@@ -26,7 +26,7 @@ gulp.task('rollup', ['clean'], (done) => {
       format: 'cjs',
       dest: 'dist/index.js'
     })
-
+  }).then(function () {
     done()
   })
 
@@ -90,10 +90,8 @@ gulp.task('gh-pages', ['bookmarkletify'], (done) => {
 gulp.task('test', () => exec('npm test'))
 
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.js', () => gulp.start('uglify') )
-  gulp.watch('dist/index.js', () => {
-    gulp.start('gh-pages')
-  })
-  gulp.watch('src/README.md', () => gulp.start('readme') )
-  gulp.watch('src/index.html', () => gulp.start('gh-pages') )
+  gulp.watch('src/**/*.js', ['uglify'])
+  gulp.watch('dist/index.js', ['gh-pages'])
+  gulp.watch('src/README.md', ['readme'])
+  gulp.watch('src/index.html', ['gh-pages'])
 })

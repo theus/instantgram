@@ -14,7 +14,9 @@ export default function searchImageOnScreen (program) {
           const isProfileImage = (image.parentElement.localName === 'a' || getAllNodeParent(image).filter(item => item.nodeName === "HEADER").length > 0) // by default, instantgram detects profile image too. But we don't need it.
           if (isElementInViewport(image) && !isProfileImage) { // verify if is in viewport
             // bring the original image if had
-            program.imageLink = (program.regexOriginalImage.test(image.src)) ? image.src.replace(program.regexOriginalImage, '') : image.src
+
+            program.setImageLink(image.src)
+            // program.imageLink = (program.regexOriginalImage.test(image.src)) ? image.src.replace(program.regexOriginalImage, '') : image.src
 
             if (program.imageLink) {
               // open image in new tab

@@ -19,8 +19,9 @@ export default function searchStories (program) {
       })
 
       if (story.length > 0) {
-        program.imageLink = (program.regexOriginalImage.test(story)) ? story.replace(program.regexOriginalImage, '') : story
-        
+        program.setImageLink(story)
+        // program.imageLink = (program.regexOriginalImage.test(story)) ? story.replace(program.regexOriginalImage, '') : story
+
         // open image in new tab
         window.open(program.imageLink)
         found = true

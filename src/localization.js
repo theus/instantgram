@@ -10,7 +10,7 @@ export default {
       'modules.update@determineIfGetUpdateIsNecessary_@alert_found': '[instantgram] found a new available update.\nPlease check http://theus.github.io/instantgram to install it.',
 
       'index@alert_onlyWorks': '[instantgram] only works on instagram.com.',
-      'index#program#modal@alert_dontFound': "[instangram] didn't find any image in this Instagram post. Please try to open the link in a new tab.",
+      'index#program#modal@alert_dontFound': "[instantgram] didn't find any image in this Instagram post. Please try to open the link in a new tab.",
       'index#program#post@alert_dontFound': "Ops, [instantgram] couldn't find any image  :-(",
       'index#program#screen@alert_dontFound': '[instantgram] found more than 1 image. Are you on a profile page? If yes, please open a single post first and open [instantgram] again.',
       'index#program@alert_dontFound': 'Ops, did you open any Instagram post? Like for example instagram.com/p/82jd828jd'
