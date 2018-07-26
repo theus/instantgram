@@ -1,5 +1,5 @@
 # [instantgram]
-![version](https://img.shields.io/badge/version-2.4.1-green.svg?style=flat-square)
+![version](https://img.shields.io/badge/version-2.4.2-green.svg?style=flat-square)
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 

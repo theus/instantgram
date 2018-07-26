@@ -1,7 +1,16 @@
 export default function searchImage (program) {
   var found = false
 
-  if (program.regexPath.test(program.path) && !program.imageLink) { // verify if are in instagram post
+  // if has a gallery, pass searchImage() and go to searchImageOnScreen()
+  const hasAGallery = program.images.length > 2
+
+  if (hasAGallery && program.regexPath.test(program.path)) {
+    program.probablyHasAGallery.check = hasAGallery
+    program.probablyHasAGallery.byModule = 'searchImage'
+    program.imagesOnViewPort = program.imagesOnViewPort.shift() // remove avatar image of page gallery
+  }
+
+  if (program.regexPath.test(program.path) && !program.imageLink & hasAGallery === false) { // verify if are in instagram post
     if (!program.foundVideo && !program.foundImage) { // if not find a video, search images
       /* =======================================
       =            Instagram Modal            =
@@ -20,6 +29,7 @@ export default function searchImage (program) {
             // open image in new tab
             window.open(program.imageLink)
             found = true
+            program.foundByModule = 'searchImage'
           } else {
             program.context = {
               hasMsg: true,
@@ -47,6 +57,7 @@ export default function searchImage (program) {
             // open image in new tab
             window.open(program.imageLink)
             found = true
+            program.foundByModule = 'searchImage'
           } else {
             program.context = {
               hasMsg: true,

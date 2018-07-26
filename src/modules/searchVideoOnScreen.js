@@ -16,6 +16,7 @@ export default function searchVideoOnScreen (program) {
             window.open(videoLink)
             found = true
             program.foundVideo = true
+            program.foundByModule = 'searchVideoOnScreen'
             program.alertNotInInstagramPost = true // if don't find nothing, alert to open the post
           }
           // if found the image stop searching

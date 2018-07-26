@@ -26,6 +26,7 @@ export default function searchStories (program) {
         window.open(program.imageLink)
         found = true
         program.foundImage = true
+        program.foundByModule = 'searchStories'
       }
 
       if (found === false) {
@@ -38,6 +39,7 @@ export default function searchStories (program) {
             window.open(videoLink)
             found = true
             program.foundVideo = true
+            program.foundByModule = 'searchStories'
             program.alertNotInInstagramPost = true // if don't find nothing, alert to open the post
           }
         }
