@@ -24,24 +24,24 @@
   "author": "Matheus Falcão",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
     "bookmarkletify": "^1.0.0",
-    "concurrently": "^3.5.1",
+    "concurrently": "^3.6.1",
     "css-loader": "^0.28.11",
     "handlebars": "^4.0.5",
     "html-loader": "^0.5.5",
-    "lodash-es": "^4.17.8",
+    "lodash-es": "^4.17.10",
     "metalsmith": "^2.1.0",
     "metalsmith-define": "^2.0.1",
     "metalsmith-layouts": "^1.6.5",
     "metalsmith-permalinks": "^0.5.0",
-    "nodemon": "^1.17.5",
+    "nodemon": "^1.18.3",
     "signale": "^1.2.1",
     "style-loader": "^0.21.0",
-    "webpack": "^4.12.1",
-    "webpack-cli": "^3.0.8"
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
     "sweetalert": "^2.1.0"
