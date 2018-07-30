@@ -7,7 +7,7 @@ export default function searchImage (program) {
   if (hasAGallery && program.regexPath.test(program.path)) {
     program.probablyHasAGallery.check = hasAGallery
     program.probablyHasAGallery.byModule = 'searchImage'
-    program.imagesOnViewPort = program.imagesOnViewPort.shift() // remove avatar image of page gallery
+    // program.imagesOnViewPort = program.imagesOnViewPort.shift() // remove avatar image of page gallery
   }
 
   if (program.regexPath.test(program.path) && !program.imageLink & hasAGallery === false) { // verify if are in instagram post
@@ -49,7 +49,6 @@ export default function searchImage (program) {
           let postImage = document.querySelector('article > div img').src
 
           // bring the original image if had
-
           program.setImageLink(postImage)
           // program.imageLink = (program.regexOriginalImage.test(postImage)) ? postImage.replace(regexOriginalImage, '') : postImage
 

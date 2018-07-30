@@ -25,6 +25,7 @@ function determineIfGetUpdateIsNecessary () {
 }
 
 function update (v) {
+
   let vNumber = v.replace(/\./g, '')
   vNumber = parseInt(vNumber)
 

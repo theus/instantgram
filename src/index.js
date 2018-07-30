@@ -2,14 +2,18 @@ import localize from './helpers/localize.js'
 import update from './modules/update.js'
 import forEach from './helpers/forEach.js'
 import isElementInViewport from './helpers/isElementInViewport.js'
+import isOnArticle from './helpers/isOnArticle.js'
 
 import searchImage from './modules/searchImage.js'
 import searchVideoOnScreen from './modules/searchVideoOnScreen.js'
 import searchImageOnScreen from './modules/searchImageOnScreen.js'
 import searchStories from './modules/searchStories.js'
+import getVideoOnPage from './modules/getVideoOnPage.js'
+
+if (DEV) console.clear()
 
 const program = {
-  VERSION: '$version',
+  VERSION: VERSION,
   hostname: window.location.hostname,
   path: window.location.pathname,
   images: [],
@@ -50,9 +54,13 @@ const program = {
   }
 }
 
-forEach(document.images, (index, image) => {
-  program.images.push(image)
-  if (isElementInViewport(image)) program.imagesOnViewPort.push(image)
+const documentImages = document.images
+
+forEach(documentImages, (index, image) => {
+  if (isOnArticle(image) || documentImages.length === 2) { // story has only 2 images (the main and the avatar)
+    program.images.push(image)
+    if (isElementInViewport(image)) program.imagesOnViewPort.push(image)
+  }
 })
 
 // verify if are running in instagram site
@@ -62,16 +70,19 @@ if (!program.regexHostname.test(program.hostname)) window.alert(localize('index@
 =            Program            =
 ===============================*/
 if (program.regexHostname.test(program.hostname)) {
-
-  if (searchStories(program) === false) {
-    if (searchVideoOnScreen(program) === false) {
-      if (searchImage(program) === false) {
-        if (searchImageOnScreen(program)) {
-          program.context.hasMsg = false
+  if (getVideoOnPage(program) === false) {
+    if (searchStories(program) === false) {
+      if (searchVideoOnScreen(program) === false) {
+        if (searchImage(program) === false) {
+          if (searchImageOnScreen(program) === false) {
+            program.context.hasMsg = false
+          }
         }
       }
     }
   }
+
+  if (DEV) console.info('dev mode', program)
 
   if (program.context.hasMsg) window.alert(localize(program.context.msg))
   if (program.alertNotInInstagramPost && !program.foundVideo && !program.foundImage) window.alert(localize('index#program@alert_dontFound'))

@@ -1,14 +1,22 @@
 {
   "name": "instantgram",
-  "version": "2.4.2",
+  "version": "3.0.0",
   "description": "A bookmarklet for download photos in Instagram",
   "main": "src/index.js",
   "scripts": {
-    "start": "gulp",
-    "test": "node .\\node_modules\\standard\\bin\\cmd.js .\\src\\**\\*.js",
-    "build": "gulp build",
-    "metalsmith": "node \"src\\_langs\\metalsmith.js\""
+    "dev": "concurrently \"npm run dev:webpack\" \"npm run dev:watch\"",
+    "start": "npm run dev",
+    "dev:watch": "nodemon --watch dist/main.js --exec \"npm run build:release:dev\"",
+    "dev:webpack": "webpack -w --env.dev",
+    "build:webpack": "webpack",
+    "build:pages": "node \"src\\_langs\\metalsmith.js\"",
+    "build:bookmarklet": "node scripts/bookmarkletify.js",
+    "build:bookmarklet:dev": "node scripts/bookmarkletify.js --dev",
+    "build:release": "npm run build:bookmarklet && npm run build:pages",
+    "build:release:dev": "npm run build:bookmarklet:dev && npm run build:pages",
+    "build": "npm run build:webpack && npm run build:release"
   },
+  "homepage": "https://theus.github.io/instantgram/",
   "repository": {
     "type": "git",
     "url": "(https://github.com/theus/instantgram"
@@ -16,24 +24,26 @@
   "author": "Matheus Falcão",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-plugin-external-helpers": "^6.8.0",
-    "babel-preset-es2015": "^6.13.0",
-    "babel-preset-es2015-rollup": "^1.1.1",
-    "babelrc-rollup": "^3.0.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "bookmarkletify": "^1.0.0",
-    "gulp": "^3.9.1",
-    "gulp-bookmarklet": "^1.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-replace": "^0.5.4",
-    "gulp-uglify": "^2.0.0",
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.11",
     "handlebars": "^4.0.5",
+    "html-loader": "^0.5.5",
+    "lodash-es": "^4.17.8",
     "metalsmith": "^2.1.0",
     "metalsmith-define": "^2.0.1",
     "metalsmith-layouts": "^1.6.5",
     "metalsmith-permalinks": "^0.5.0",
-    "rollup": "^0.34.7",
-    "rollup-plugin-babel": "^2.6.1",
-    "standard": "^7.1.2"
+    "nodemon": "^1.17.5",
+    "signale": "^1.2.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "sweetalert": "^2.1.0"
   }
 }

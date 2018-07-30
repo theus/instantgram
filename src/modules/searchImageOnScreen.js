@@ -11,11 +11,14 @@ export default function searchImageOnScreen (program) {
   try {
     if (!program.imageLink && !program.foundVideo) { // verify if already found a image
       search: { // eslint-disable-line no-labels
+        program.images.reverse() // reverse order of images -> the probably of images on screen is in the end of array
         for (let image of program.images) {
+
           if (isElementInViewport(image) && !isProfileImage(image)) { // verify if is in viewport
             // bring the original image if had
 
-            const hasAGallery = getAllNodeParent(image).filter(item => item.nodeName === "UL").length > 0
+            const ULs = getAllNodeParent(image).filter(item => item.nodeName === "UL")
+            const hasAGallery = ULs.length > 0
 
             if (hasAGallery) {
               program.probablyHasAGallery.check = hasAGallery
@@ -38,13 +41,12 @@ export default function searchImageOnScreen (program) {
               // program.imageLink = (program.regexOriginalImage.test(image.src)) ? image.src.replace(program.regexOriginalImage, '') : image.src
             }
 
-
             if (program.imageLink) {
               // open image in new tab
               window.open(program.imageLink)
               program.foundImage = true
-              program.foundByModule = 'searchImageOnScreen'
               found = true
+              program.foundByModule = 'searchImageOnScreen'
             } else {
               program.context = {
                 hasMsg: true,

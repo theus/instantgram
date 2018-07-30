@@ -1,6 +1,7 @@
 const Metalsmith = require('Metalsmith')
 const Handlebars = require('handlebars')
 const fs = require('fs')
+const signale = require('signale');
 
 // plugins
 const layouts = require('metalsmith-layouts')
@@ -13,6 +14,7 @@ const jsonpkg = require('../../package.json')
 
 // handlebars helpers
 Handlebars.registerHelper('to_lowercase', str => str.toLowerCase())
+signale.pending('Build page initiated...');
 
 Metalsmith(__dirname)
   .use(define({
@@ -30,12 +32,12 @@ Metalsmith(__dirname)
   .use(permalinks(':lang/'))
   .destination('../../lang')
   .build(function (err) {
-    if (err) throw err
+    if (err) signale.fatal(err);
+    var source = fs.createReadStream('./lang/en-us/index.html')
+    var dest = fs.createWriteStream('./index.html')
+
+    source.pipe(dest)
+    source.on('end', function () { signale.success('Build page complete'); })
+    source.on('error', function (err) { if (err) signale.fatal(err); })
   })
 
-var source = fs.createReadStream('./lang/en-us/index.html')
-var dest = fs.createWriteStream('./index.html')
-
-source.pipe(dest)
-source.on('end', function () { console.log('build complete') })
-source.on('error', function (err) { if (err) throw err })
