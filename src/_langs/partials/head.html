@@ -1,8 +1,9 @@
 <head>
     <meta charset="UTF-8">
     {{#each langs}}
-    <link rel="alternate" href="{{link}}" hreflang="{{lang}}">
+    <link rel="alternate" href="{{link}}" hreflang="{{lang_ISO_639_1}}">
     {{/each}}
+    <link rel="alternate" href="{{langs.0.link}}" hreflang="x-default">
     <title>[instantgram]</title>
     <meta name="description" content="{{project_lead}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
