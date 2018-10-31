@@ -6,13 +6,13 @@
 
 [Versão em Português =)](http://theus.github.io/instantgram/lang/pt-br)
 
-[instantgram] is a bookmarklet with purpose of download instagram images. Tiny, simple, without necessity of extensions or downloads. Just access [this link][1] and drag the [instantgram] button to bookmark bar of your browser, navigate to the instagram.com (web), open a instagram post (photo) and click at bookmarklet. Just works.
+[instantgram] is a bookmarklet with the purpose of downloading Instagram images. It is tiny, simple, and doesn't require extensions or downloads. Just access [this link][1] and drag the [instantgram] button to the bookmark bar of your browser, navigate to instagram.com (web), open an Instagram post (photo) and click on the bookmarklet. That's all it takes!
 
 ### [:arrow_right: Bookmarklet][1]
 
 ![gif demo](img/demo.gif)
 
-:bulb: Now in version 2.1.0, [instantgram] can search images in screen. So, if you scrolling by your timeline, pause the scroll on image that you want and click in [instantgram]. Should work.
+:bulb: Now in version 2.1.0, [instantgram] can search images on screen. When scrolling through your timeline, stop on the image that you want and click on the [instantgram] bookmarklet. It should work.
 
 ## Compatibility
 
@@ -22,7 +22,7 @@
 | Mozilla Firefox      | :white_check_mark: |
 | Internet Explorer 11 | :white_check_mark: |
 | Edge*                | :warning:          |
-*_aparently Edge don't allow drag a button to bookmark bar_
+*_apparently Edge doesn't allow you to drag a button to the bookmark bar_
 
 ## Roadmap
 
@@ -32,13 +32,13 @@
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) for more informations. :heart:
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
 - v2.4.0 - [instangram] now supports Stories.
-- v2.3.0 - [instangram] now supports localization, both app and website. Initially it has en-US and pt-BR. You can help us translating [instantgram] for your language! Cool? Read [contributing](CONTRIBUTING.md) for more informations.
+- v2.3.0 - [instangram] now supports localization, both app and website. Initially it has en-US and pt-BR. You can help us translate [instantgram] for your language! Cool? Read [contributing](CONTRIBUTING.md) for more information.
 - v2.2.0 - [instantgram] now supports video too! :movie_camera:
-- After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may using a version before v2.0.0.
+- After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may be using a version before v2.0.0.
 
 
 [1]:http://theus.github.io/instantgram
