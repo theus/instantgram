@@ -1,6 +1,7 @@
 import isElementInViewport from '../helpers/isElementInViewport.js'
 import getAllNodeParent from '../helpers/getAllNodeParent.js'
 import isProfileImage from '../helpers/isProfileImage.js'
+import isProfileImageOfAFriendThatLikeThePost from '../helpers/isProfileImageOfAFriendThatLikeThePost.js'
 
 export default function searchImageOnScreen (program) {
   var found = false
@@ -14,7 +15,7 @@ export default function searchImageOnScreen (program) {
         program.images.reverse() // reverse order of images -> the probably of images on screen is in the end of array
         for (let image of program.images) {
 
-          if (isElementInViewport(image) && !isProfileImage(image)) { // verify if is in viewport
+          if (isElementInViewport(image) && !isProfileImage(image) && !isProfileImageOfAFriendThatLikeThePost(image)) { // verify if is in viewport
             // bring the original image if had
 
             const ULs = getAllNodeParent(image).filter(item => item.nodeName === "UL")
