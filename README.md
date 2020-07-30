@@ -1,5 +1,5 @@
-# [instantgram]
-![GitHub release](https://img.shields.io/github/release/theus/instantgram.svg)
+# [instantgram] v4.0.0
+![GitHub release](https://img.shields.io/badge/release-v4.0.0-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -12,7 +12,8 @@
 
 ![gif demo](img/demo.gif)
 
-:bulb: Now in version 2.1.0, [instantgram] can search images on screen. When scrolling through your timeline, stop on the image that you want and click on the [instantgram] bookmarklet. It should work.
+:bulb: Now in version 4.0.0, [instantgram] now working again with full support of all media types also recognizes canvas images.\
+Also it has now support for multiple images videos in any site feed or post with modal.
 
 ## Compatibility
 
@@ -21,6 +22,7 @@
 | Google Chrome        | :white_check_mark: |
 | Mozilla Firefox      | :white_check_mark: |
 | Internet Explorer 11 | :white_check_mark: |
+| Edge on chromium >=80 | :white_check_mark: |
 | Edge*                | :warning:          |
 *_apparently Edge doesn't allow you to drag a button to the bookmark bar_
 
@@ -35,6 +37,8 @@
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+- v4.0.0 - [instangram] now working again with full support of all media types also recognizes canvas images.\
+Also it has now support for multiple images videos in any site feed or post with modal. 
 - v2.4.0 - [instangram] now supports Stories.
 - v2.3.0 - [instangram] now supports localization, both app and website. Initially it has en-US and pt-BR. You can help us translate [instantgram] for your language! Cool? Read [contributing](CONTRIBUTING.md) for more information.
 - v2.2.0 - [instantgram] now supports video too! :movie_camera:
