@@ -3,18 +3,18 @@
     "lang": "en-US",
     "lang_ISO_639_1": "en",
     "name": "English",
-    "link": "https://theus.github.io/instantgram/"
-  },
-  {
-    "lang": "pt-BR",
-    "lang_ISO_639_1": "pt",
-    "name": "Portuguese (Brasil)",
-    "link": "https://theus.github.io/instantgram/lang/pt-br"
+    "link": "https://thinkbig-company.github.io/instantgram/"
   },
   {
     "lang": "de-DE",
     "lang_ISO_639_1": "de",
     "name": "German (Deutsch)",
-    "link": "https://theus.github.io/instantgram/lang/de-de"
+    "link": "https://thinkbig-company.github.io/instantgram/lang/de-de"
+  },
+  {
+    "lang": "pt-BR",
+    "lang_ISO_639_1": "pt",
+    "name": "Portuguese (Brasil)",
+    "link": "https://thinkbig-company.github.io/instantgram/lang/pt-br"
   }
 ]

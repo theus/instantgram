@@ -63,7 +63,7 @@ function update (v) {
       }
     })
 
-    xhr.open('GET', 'https://theus.github.io/instantgram/package.json')
+    xhr.open('GET', 'https://thinkbig-company.github.io/instantgram/package.json')
     xhr.send()
   }
 }

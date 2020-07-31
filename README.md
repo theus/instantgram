@@ -4,7 +4,7 @@
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
-[Versão em Português =)](http://theus.github.io/instantgram/lang/pt-br)
+[Versão em Português =)](http://thinkbig-company.github.io/instantgram/lang/pt-br)
 
 [instantgram] is a bookmarklet with the purpose of downloading Instagram images. It is tiny, simple, and doesn't require extensions or downloads. Just access [this link][1] and drag the [instantgram] button to the bookmark bar of your browser, navigate to instagram.com (web), open an Instagram post (photo) and click on the bookmarklet. That's all it takes!
 
@@ -45,4 +45,4 @@ Also it has now support for multiple images videos in any site feed or post with
 - After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may be using a version before v2.0.0.
 
 
-[1]:http://theus.github.io/instantgram
+[1]:http://thinkbig-company.github.io/instantgram
