@@ -15,7 +15,7 @@ Bugs and errors in section above could fixed by a pull request. PR are welcome! 
 Steps
 - fork [instantgram] repo
 - clone in your PC
-- make a new branch for your feature `git checkout -b feature_branch` 
+- make a new branch for your feature `git checkout -b feature_branch`
 - `npm install` for install all dependencies (you must have node instaled)
 - all source files are in `src/` folder and [instantgram] has 2 commands. `gulp` for compile and watch files and `gulp build` for build before commit
 - bump version in `package.json` following [SemVer](http://semver.org) guidelines
@@ -37,4 +37,4 @@ for translate website:
 
 That's all! Thanks =)
 
-[1]:https://github.com/thinkbig-company/instantgram/issues/new
+[1]:https://github.com/theus/instantgram/issues/new

@@ -16,10 +16,10 @@
     "build:release:dev": "npm run build:bookmarklet:dev && npm run build:pages",
     "build": "npm run build:webpack && npm run build:release"
   },
-  "homepage": "https://thinkbig-company.github.io/instantgram/",
+  "homepage": "https://theus.github.io/instantgram/",
   "repository": {
     "type": "git",
-    "url": "(https://github.com/thinkbig-company/instantgram"
+    "url": "(https://github.com/theus/instantgram"
   },
   "author": "Matheus Falcão",
   "license": "ISC",
