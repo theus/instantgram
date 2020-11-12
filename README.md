@@ -37,6 +37,7 @@ Also it has now support for multiple images videos in any site feed or post with
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+- v4.0.1 - Fix #33 URL Signature Mismatch on Edge Chromium
 - v4.0.0 - [instangram] now working again with full support of all media types also recognizes canvas images. Also it has now support for multiple images videos in any site feed or post with modal. (thanks to @ThinkBIG-Company)
 - v2.4.0 - [instangram] now supports Stories.
 - v2.3.0 - [instangram] now supports localization, both app and website. Initially it has en-US and pt-BR. You can help us translate [instantgram] for your language! Cool? Read [contributing](CONTRIBUTING.md) for more information.

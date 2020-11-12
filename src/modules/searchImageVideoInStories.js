@@ -9,9 +9,9 @@ export default function searchImageVideoInStories(program) {
     try {
         if (program.regexStoriesURI.test(program.path)) {
             const $root = document.getElementById('react-root')
-            
+
             const $video = $root.querySelectorAll('video > source')
-			const $img = $root.querySelectorAll('img[srcset]')
+			const $img = $root.querySelectorAll(program.mediaImageElExpression)
 
 			//console.log($video)
 			let story = ''
@@ -21,10 +21,10 @@ export default function searchImageVideoInStories(program) {
 				if($img.length == 1) {
 					story = $img[0].src
 				}
-			} 
-			
+			}
+
 			//console.log($video)
-						
+
             if (story) {
                 program.setImageLink(story)
                 // program.imageLink = (program.regexOriginalImage.test(story)) ? story.replace(program.regexOriginalImage, '') : story

@@ -33,7 +33,7 @@ export default function searchVideoInPage(program) {
                     _articleElement = $container.querySelectorAll('video');
                 }
 
-                // second stage			
+                // second stage
                 var _mediaEl;
                 let liElements = [..._articleElement.querySelectorAll('div > div > div > div > div > div > div > ul:first-child > li')].filter(el => (el.firstChild != null && el.classList.length > 0));
                 if (liElements.length > 1) {

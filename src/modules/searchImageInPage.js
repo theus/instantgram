@@ -11,27 +11,27 @@ export default function searchImageInPage(program) {
     ===============================================*/
     try {
         searchImage: { // eslint-disable-line no-labels
-            if (document.querySelectorAll('main > section').length === 1) {
-                var $container = document.querySelector('main > section')
-                var $article = $container.querySelectorAll('div > div > div > article')
-				//console.log($article)
-				
-				var imageLink
-				for(var i=0; i<$article.length; i++) {
+            debugger
+            if (document.querySelectorAll('#react-root > section').length === 1) {
+                const $container = document.querySelector('#react-root > section')
+                const $article = $container.querySelectorAll('div > div > div > article')
+
+				let imageLink
+				for (let i=0; i<$article.length; i++) {
 					if(isElementInViewport($article[i])) {
-						
+
 						/*
 						Single image
 						*/
 						var singleImage = $article[i].querySelector('div > div > div > div > img')
 						if(singleImage) {
-							imageLink = singleImage.src						
+							imageLink = singleImage.src
 						}
-						
+
 						break
 					}
 				}
-				
+
 				// Next
 				/*
 				Series image
@@ -39,7 +39,7 @@ export default function searchImageInPage(program) {
 				var multiImage = [...$article[i].querySelectorAll('div > div > div > div > div > div > div > ul:first-child > li')].filter(el => (el.firstChild != null && el.classList.length > 0));
 				//console.log(multiImage.length)
 				if(multiImage) {
-							
+
 					var _mediaEl;
 					if (multiImage.length > 1) {
 						// this is the hack for instagram dont mess with me fuckers !
@@ -51,19 +51,19 @@ export default function searchImageInPage(program) {
 							} else {
 								_mediaEl = multiImage.reverse().pop()
 							}
-							//console.log(_mediaEl.querySelector('img[srcset]'))
+							//console.log(_mediaEl.querySelector(program.mediaImageElExpression))
 						} else {
 							//console.log(multiImage[Math.floor(multiImage.length / 2)])
 						}
-					
-						_mediaEl = _mediaEl.querySelector('img[srcset]')
+
+						_mediaEl = _mediaEl.querySelector(program.mediaImageElExpression)
 						imageLink = _mediaEl.src
-					
+
 					}
 				}
-				
+
 				//console.log(imageLink)
-				
+
 				// bring the original image if had
 				program.setImageLink(imageLink)
 
@@ -78,7 +78,7 @@ export default function searchImageInPage(program) {
 						msg: 'index#program#post@alert_dontFound'
 					}
 				}
-                
+
                 // if found the image stop searching
                 break searchImage // eslint-disable-line no-labels
 

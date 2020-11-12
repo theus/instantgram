@@ -26,11 +26,11 @@ export default function searchImageInPost(program) {
                     //console.log(liElements[Math.floor(liElements.length / 2)]);
                 }
 
-                _mediaEl = _mediaEl.querySelectorAll('img[srcset]');
+                _mediaEl = _mediaEl.querySelectorAll(program.mediaImageElExpression);
 
             } else {
                 // Single image
-                _mediaEl = $container.querySelectorAll('img[srcset]');
+                _mediaEl = $container.querySelectorAll(program.mediaImageElExpression);
             }
 
             //console.log(_mediaEl);
