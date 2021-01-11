@@ -7,7 +7,7 @@ const LANGS_NORMALIZE = {
   'en-GB': 'en-US'
 }
 
-const LANG_DEFAULT = LANGS_NORMALIZE[navigator.language]
+const LANG_DEFAULT = LANGS_NORMALIZE[navigator.language] || 'en-US'
 
 /**
  * @name: localize! function to return localized strings in localization.js

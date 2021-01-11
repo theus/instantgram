@@ -11,7 +11,6 @@ export default function searchImageInPage(program) {
     ===============================================*/
     try {
         searchImage: { // eslint-disable-line no-labels
-            debugger
             if (document.querySelectorAll('#react-root > section').length === 1) {
                 const $container = document.querySelector('#react-root > section')
                 const $article = $container.querySelectorAll('div > div > div > article')

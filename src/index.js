@@ -18,9 +18,16 @@ if (DEV) {
 
 const isEdge = window.navigator.userAgent.indexOf('Edge') > -1 || window.navigator.userAgent.indexOf('Edg') > -1
 
+const mediaImageElExpressions = {
+  cover: 'img[style="object-fit: cover;"]',
+  srcset: 'img[srcset]',
+  img: 'img'
+}
+
 const program = {
   VERSION: VERSION,
-  mediaImageElExpression: isEdge ? 'img[style="object-fit: cover;"]' : 'img[srcset]',
+  mediaImageElExpressions,
+  mediaImageElExpression: isEdge ? mediaImageElExpressions.cover : mediaImageElExpressions.srcset,
   hostname: window.location.hostname,
   path: window.location.pathname,
   images: [],
