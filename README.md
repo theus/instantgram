@@ -1,5 +1,5 @@
-# [instantgram] v4.0.2
-![GitHub release](https://img.shields.io/badge/release-v4.0.2-blue)
+# [instantgram] v4.0.3
+![GitHub release](https://img.shields.io/badge/release-v4.0.3-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -37,6 +37,7 @@ Also it has now support for multiple images videos in any site feed or post with
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+- v4.0.3 - Fix search images (automatically) on page
 - v4.0.2 - Fix [#32](https://github.com/theus/instantgram/issues/32) set language: undefined
 - v4.0.1 - Fix [#33](https://github.com/theus/instantgram/issues/33) URL Signature Mismatch on Edge Chromium
 - v4.0.0 - [instangram] now working again with full support of all media types also recognizes canvas images. Also it has now support for multiple images videos in any site feed or post with modal. (thanks to @ThinkBIG-Company)

@@ -95,7 +95,9 @@ if (program.regexHostname.test(program.hostname)) {
         if (searchVideoInModalPost(program) === false) {
           if (searchImageInPost(program) === false) {
             if (searchImageInModalPost(program) === false) {
-              program.context.hasMsg = false
+              if (searchImageInPage(program) === false) {
+                program.context.hasMsg = false
+              }
             }
           }
         }
