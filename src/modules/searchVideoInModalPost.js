@@ -1,7 +1,8 @@
 import isElementInViewport from '../helpers/isElementInViewport.js'
+import getOriginalVideoFromBlob from './/getOriginalVideoFromBlob.js'
 
 export default function searchVideoInModalPost(program) {
-    var found = false
+    let found = false
 
     /* =======================================
       =            Instagram Modal            =
@@ -47,11 +48,8 @@ export default function searchVideoInModalPost(program) {
 
                         if (videoLink) {
                             if (videoLink.indexOf('blob:') !== -1) {
-                                program.context = {
-                                    hasMsg: true,
-                                    msg: 'index#program@alert_videoBlob'
-                                }
-                                break searchVideo // eslint-disable-line no-labels
+                              found = getOriginalVideoFromBlob(program, _mediaEl[i].src)
+                              break searchVideo // eslint-disable-line no-labels
                             } else {
                                 // open video in new tab
                                 window.open(videoLink)

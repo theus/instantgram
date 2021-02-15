@@ -1,7 +1,8 @@
 import isElementInViewport from '../helpers/isElementInViewport.js'
+import getOriginalVideoFromBlob from './getOriginalVideoFromBlob.js'
 
 export default function searchVideoInPost(program) {
-    var found = false
+    let found = false
 
     /* ==============================================
     =            Video visible in screen            =
@@ -27,14 +28,14 @@ export default function searchVideoInPost(program) {
                     } else {
                         //console.log(liElements[Math.floor(liElements.length / 2)]);
                     }
-					
+
 					 _mediaEl = _mediaEl.querySelectorAll('video');
-					
+
                 } else {
                     // Single video
                     _mediaEl = $container.querySelectorAll('video');
                 }
-				
+
 				//console.log(_mediaEl)
 
 				// last stage open video ?
@@ -44,14 +45,11 @@ export default function searchVideoInPost(program) {
 
                     if (isElementInViewport(_mediaEl[i])) { // verify if is in viewport
                         let videoLink = _mediaEl[i].src
-						
+
                         if (videoLink) {
                             if (videoLink.indexOf('blob:') !== -1) {
-                                program.context = {
-                                    hasMsg: true,
-                                    msg: 'index#program@alert_videoBlob'
-                                }
-                                break searchVideo // eslint-disable-line no-labels
+                              found = getOriginalVideoFromBlob(program, _mediaEl[i])
+                              break searchVideo // eslint-disable-line no-labels
                             } else {
                                 // open video in new tab
                                 window.open(videoLink)
@@ -74,6 +72,6 @@ export default function searchVideoInPost(program) {
         console.error('searchVideoInPost()', `[instantgram] ${program.VERSION}`, e)
     }
     /* =====  End of Video visible in screen  ======*/
-	
+
     return found
 }

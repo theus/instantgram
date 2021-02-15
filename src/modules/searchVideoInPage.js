@@ -1,7 +1,8 @@
 import isElementInViewport from '../helpers/isElementInViewport.js'
+import getOriginalVideoFromBlob from '../modules/getOriginalVideoFromBlob.js'
 
 export default function searchVideoInPage(program) {
-    var found = false
+    let found = false
 
     /* ====================================
     =            Video on page            =
@@ -69,10 +70,7 @@ export default function searchVideoInPage(program) {
                         if (videoLink) {
 
                             if (videoLink.indexOf('blob:') !== -1) {
-                                program.context = {
-                                    hasMsg: true,
-                                    msg: 'index#program@alert_videoBlob'
-                                }
+                              found = getOriginalVideoFromBlob(program, _mediaEl[i])
                                 break searchVideo // eslint-disable-line no-labels
                             } else {
                                 // open video in new tab
