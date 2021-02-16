@@ -59,6 +59,6 @@ export default {
       'index#program#post@alert_dontFound': 'ops, [instantgram] não encontrou a imagem :(',
       'index#program#screen@alert_dontFound': '[instantgram] a procura por imagem na tela encontrou mais de 1 imagem. Você está em um perfil? Se sim, abra alguma imagem antes de rodar o [instantgram]',
       'index#program@alert_dontFound': 'ops, você está em algum post do instagram? ex: instagram.com/p/82jd828jd'
-    },
+    }
   }
 }

@@ -1,31 +1,31 @@
-import localize from './helpers/localize.js'
-//import update from './modules/update.js'
-import forEach from './helpers/forEach.js'
-import isElementInViewport from './helpers/isElementInViewport.js'
-import isOnArticle from './helpers/isOnArticle.js'
+import localize from './helpers/localize'
+import forEach from './helpers/forEach'
+import isElementInViewport from './helpers/isElementInViewport'
+import isOnArticle from './helpers/isOnArticle'
 
-import searchVideoInPage from './modules/searchVideoInPage.js'
-import searchImageVideoInStories from './modules/searchImageVideoInStories.js'
-import searchVideoInPost from './modules/searchVideoInPost.js'
-import searchVideoInModalPost from './modules/searchVideoInModalPost.js'
-import searchImageInPage from './modules/searchImageInPage.js'
-import searchImageInPost from './modules/searchImageInPost.js'
-import searchImageInModalPost from './modules/searchImageInModalPost.js'
+import { VideoInPage } from './modules/VideoInPage'
+import { ImageVideoInStories } from './modules/ImageVideoInStories'
+import { VideoInPost } from './modules/VideoInPost'
+import { VideoInModalPost } from './modules/VideoInModalPost'
+import { ImageInPage } from './modules/ImageInPage'
+import { ImageInPost } from './modules/ImageInPost'
+import { ImageInModalPost } from './modules/ImageInModalPost'
+import { MediaImageElExpressions, Program } from './types'
 
-if (DEV) {
+if (process.env.DEV) {
   console.clear()
 }
 
 const isEdge = window.navigator.userAgent.indexOf('Edge') > -1 || window.navigator.userAgent.indexOf('Edg') > -1
 
-const mediaImageElExpressions = {
+const mediaImageElExpressions: MediaImageElExpressions = {
   cover: 'img[style="object-fit: cover;"]',
   srcset: 'img[srcset]',
   img: 'img'
 }
 
-const program = {
-  VERSION: VERSION,
+const program: Program = {
+  VERSION: process.env.VERSION as string,
   mediaImageElExpressions,
   mediaImageElExpression: isEdge ? mediaImageElExpressions.cover : mediaImageElExpressions.srcset,
   hostname: window.location.hostname,
@@ -71,7 +71,8 @@ const program = {
 
 const documentImages = document.images
 
-forEach(documentImages, (index, image) => {
+forEach(documentImages, (_, el) => {
+  const image = el as HTMLImageElement
   if (isOnArticle(image) || documentImages.length === 2) { // story has only 2 images (the main and the avatar)
     program.images.push(image)
     if (isElementInViewport(image)) {
@@ -89,13 +90,13 @@ if (!program.regexHostname.test(program.hostname)) {
 =            Program            =
 ===============================*/
 if (program.regexHostname.test(program.hostname)) {
-  if (searchVideoInPage(program) === false) {
-    if (searchImageVideoInStories(program) === false) {
-      if (searchVideoInPost(program) === false) {
-        if (searchVideoInModalPost(program) === false) {
-          if (searchImageInPost(program) === false) {
-            if (searchImageInModalPost(program) === false) {
-              if (searchImageInPage(program) === false) {
+  if (new VideoInPage().execute(program) === false) {
+    if (new ImageVideoInStories().execute(program) === false) {
+      if (new VideoInPost().execute(program) === false) {
+        if (new VideoInModalPost().execute(program) === false) {
+          if (new ImageInPost().execute(program) === false) {
+            if (new ImageInModalPost(). execute(program) === false) {
+              if (new ImageInPage().execute(program) === false) {
                 program.context.hasMsg = false
               }
             }
@@ -105,7 +106,7 @@ if (program.regexHostname.test(program.hostname)) {
     }
   }
 
-  if (DEV) {
+  if (process.env.DEV) {
     console.info('dev mode', program)
   }
 
