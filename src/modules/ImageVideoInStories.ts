@@ -9,6 +9,7 @@ export class ImageVideoInStories implements Module {
 
   public execute(program: Program): boolean {
     let found = false
+    let storyType: null|'video'|'image' = null
 
     /* =====================================
     =            Search in Stories         =
@@ -24,14 +25,16 @@ export class ImageVideoInStories implements Module {
 
         if ($video.length > 0) {
           story = $video[0].src
+          storyType = 'video'
         } else {
           story = $img.src
+          storyType = 'image'
         }
 
         const foundInstance = new Found(program, this)
 
         if (story) {
-          foundInstance.image(story)
+          foundInstance[storyType](story)
           found = true
         }
 

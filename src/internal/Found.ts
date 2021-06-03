@@ -1,3 +1,4 @@
+import { getUniversalCdnUrl } from "../helpers/getUniversalCdnUrl"
 import { Module } from "../modules/Module"
 import { Program } from "../types"
 
@@ -15,7 +16,8 @@ export class Found {
   }
 
   public video(link: string): void {
-    window.open(link)
+    const cdnLink = getUniversalCdnUrl(link)
+    window.open(cdnLink)
     this._program.foundByModule = this._module.getName()
     this._program.foundVideo = true
     this._program.alertNotInInstagramPost = true // if don't find nothing, alert to open the post

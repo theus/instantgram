@@ -1,5 +1,5 @@
-# [instantgram] v4.0.4
-![GitHub release](https://img.shields.io/badge/release-v4.0.4-blue)
+# [instantgram] v4.0.5
+![GitHub release](https://img.shields.io/badge/release-v4.0.5-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -38,6 +38,7 @@ Also it has now support for multiple images videos in any site feed or post with
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+- v4.0.5 - Fix loading of videos from story (and maybe posts) [#50](https://github.com/theus/instantgram/issues/50), [#48](https://github.com/theus/instantgram/issues/48) (thanks [@joe-wee](https://github.com/joe-wee)!)
 - v4.0.4 - Fix open blob video files
 - v4.0.3 - Fix search images (automatically) on page
 - v4.0.2 - Fix [#32](https://github.com/theus/instantgram/issues/32) set language: undefined
