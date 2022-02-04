@@ -3,6 +3,7 @@ import isProfileImage from '../helpers/isProfileImage'
 import { Module } from './Module'
 import { Program } from '../types'
 import { Found } from '../internal/Found'
+import { CarouselImages, getCurrentImageOfACarousel } from '../helpers/getCurrentImageOfACarousel'
 
 export class ImageInPage extends Module {
   public getName(): string {
@@ -29,7 +30,7 @@ export class ImageInPage extends Module {
             }
           })
 
-          const imagesOfTheMostVisiblePost: HTMLImageElement[] = []
+          const imagesOfTheMostVisiblePost: CarouselImages = []
 
           arrOfPostsVisible.forEach($post => {
             const nodeListOfImgsInsidePost = $post.querySelectorAll('img')
@@ -49,34 +50,8 @@ export class ImageInPage extends Module {
             found = true
           }
 
-
-          // can be any image as all of them is inside the same post
-          const $divPresentation = imagesOfTheMostVisiblePost[0].closest('[role="presentation"]')
-          const arrOfControlButtonsInTheCarousel = Array.from($divPresentation.parentElement.querySelectorAll('button')) // buttons previous / next
-
-          const isBackButton = arrOfControlButtonsInTheCarousel.length === 1 && arrOfControlButtonsInTheCarousel[0].querySelector('.coreSpriteLeftChevron') !== null
-          const isNextButton = arrOfControlButtonsInTheCarousel.length === 1 && arrOfControlButtonsInTheCarousel[0].querySelector('.coreSpriteRightChevron') !== null
-
-
-          // album post
           if (!found) {
-            // first image
-            if (arrOfControlButtonsInTheCarousel.length === 1 && isNextButton) {
-              imageLink = imagesOfTheMostVisiblePost[0].src
-              found = true
-            }
-
-            // last image
-            if (arrOfControlButtonsInTheCarousel.length === 1 && isBackButton) {
-              imageLink = imagesOfTheMostVisiblePost[1].src
-              found = true
-            }
-
-            // other images
-            if (imagesOfTheMostVisiblePost.length === 3) {
-              imageLink = imagesOfTheMostVisiblePost[1].src
-              found = true
-            }
+            imageLink = getCurrentImageOfACarousel(imagesOfTheMostVisiblePost)
           }
 
           if (imageLink) {

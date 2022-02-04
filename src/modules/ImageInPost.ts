@@ -1,4 +1,6 @@
+import { CarouselImages, getCurrentImageOfACarousel } from '../helpers/getCurrentImageOfACarousel'
 import isElementInViewport from '../helpers/isElementInViewport'
+import isProfileImage from '../helpers/isProfileImage'
 import { Found } from '../internal/Found'
 import { Program } from '../types'
 import { Module } from './Module'
@@ -14,53 +16,41 @@ export class ImageInPost extends Module {
     =            Instagram Post                     =
     ===============================================*/
     try {
-      if (document.getElementsByTagName('article').length === 1) { // verify if has a image post
-        const $container = document.querySelector('article')
+      if (program.regexPath.test(program.path)) { // verify user it's on post link
+        let imageLink
 
-        // Multiple image
-        let _mediaEl
-        const liElements = Array.from($container.querySelectorAll('div > div > div > div > div > div > div > ul:first-child > li')).filter(el => (el.firstChild != null && el.classList.length > 0))
-        if (liElements.length > 1) {
-          // this is the hack for instagram dont mess with me fuckers !
-          if (liElements.length == 3) {
-            _mediaEl = liElements[Math.floor(liElements.length / 2)]
-          } else if (liElements.length == 2) {
-            if (document.getElementsByClassName('coreSpriteLeftChevron').length == 1) {
-              _mediaEl = liElements.reverse().shift()
-            } else {
-              _mediaEl = liElements.reverse().pop()
-            }
-          } else {
-            //console.log(liElements[Math.floor(liElements.length / 2)]);
+        const $postCard = document.querySelector('article[role="presentation"]')
+        const $divPresentation = $postCard.querySelector('div[role="presentation"]')
+
+        const imagesOfTheMostVisiblePost: CarouselImages = []
+
+        const nodeListOfImgsInsidePost = $divPresentation.querySelectorAll('img')
+
+        nodeListOfImgsInsidePost.forEach($img => {
+          if (isElementInViewport($img) && !isProfileImage($img)) {
+            imagesOfTheMostVisiblePost.push($img)
           }
+        })
 
-          _mediaEl = _mediaEl.querySelectorAll(program.mediaImageElExpression)
+        // single post
+        if (imagesOfTheMostVisiblePost.length === 1) {
+          const $singleImage = imagesOfTheMostVisiblePost[0]
 
-        } else {
-          // Single image
-          _mediaEl = $container.querySelectorAll(program.mediaImageElExpression)
+          imageLink = $singleImage.src
+          found = true
         }
 
-        //console.log(_mediaEl);
+        if (!found) {
+          imageLink = getCurrentImageOfACarousel(imagesOfTheMostVisiblePost, $divPresentation)
+        }
 
-        // last stage open the image ?
-        for (let i = 0; i < _mediaEl.length; i++) {
-          //console.log(isElementInViewport(_mediaEl[i]))
-
-          if (isElementInViewport(_mediaEl[i])) { // verify if is in viewport
-            const img = _mediaEl[i] as HTMLImageElement
-            const imageLink = img.src
-
-            if (imageLink) {
-              new Found(program, this).image(imageLink)
-              found = true
-            } else {
-              program.context = {
-                hasMsg: true,
-                msg: 'index#program#screen@alert_dontFound'
-              }
-            }
-            program.alertNotInInstagramPost = false
+        if (imageLink) {
+          new Found(program, this).image(imageLink)
+          found = true
+        } else {
+          program.context = {
+            hasMsg: true,
+            msg: 'index#program#screen@alert_dontFound'
           }
         }
       }
