@@ -3,7 +3,7 @@ import { Module } from './Module'
 import { Program } from '../types'
 import { Found } from '../internal/Found'
 
-export class ImageInPage implements Module {
+export class ImageInPage extends Module {
   public getName(): string {
     return 'ImageInPage'
   }
@@ -87,7 +87,7 @@ export class ImageInPage implements Module {
       }
     }
     catch (e) {
-      console.error('searchImageInPage()', `[instantgram] ${program.VERSION}`, e)
+      this.error(e as Error, program)
     }
     /* =====  End of Image visible in screen  ======*/
 

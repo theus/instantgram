@@ -1,4 +1,4 @@
-const Metalsmith = require('Metalsmith')
+const Metalsmith = require('metalsmith')
 const Handlebars = require('handlebars')
 const fs = require('fs')
 const signale = require('signale');

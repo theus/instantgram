@@ -4,7 +4,7 @@ import { Module } from './Module'
 import { Program } from '../types'
 import { Found } from '../internal/Found'
 
-export class VideoInModalPost implements Module {
+export class VideoInModalPost extends Module {
   public getName(): string {
     return 'VideoInModalPost'
   }
@@ -74,7 +74,7 @@ export class VideoInModalPost implements Module {
       }
     }
     catch (e) {
-      console.error('searchVideoInModalPost()', `[instantgram] ${program.VERSION}`, e)
+      this.error(e as Error, program)
     }
     /* =====  End of Video visible in screen  ======*/
 

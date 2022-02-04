@@ -2,7 +2,7 @@ import { Found } from '../internal/Found'
 import { Program } from '../types'
 import { Module } from './Module'
 
-export class ImageVideoInStories implements Module {
+export class ImageVideoInStories extends Module {
   public getName(): string {
     return 'ImageVideoInStories'
   }
@@ -19,7 +19,12 @@ export class ImageVideoInStories implements Module {
         const $root = document.getElementById('react-root')
 
         const $video = $root.querySelectorAll('video > source') as NodeListOf<HTMLVideoElement>
-        const $img = ($root.querySelector(program.mediaImageElExpression) || $root.querySelector(program.mediaImageElExpressions.img)) as HTMLImageElement
+
+        const arrOfButtons = $root.querySelectorAll('button[aria-label]')
+
+        const $previousStoryButton = arrOfButtons[0] // first button of the page
+        const $actualStoryWrapper = $previousStoryButton.nextElementSibling
+        const $img = ($actualStoryWrapper.querySelector(program.mediaImageElExpression) || $root.querySelector(program.mediaImageElExpressions.img)) as HTMLImageElement
 
         let story = ''
 
@@ -54,7 +59,7 @@ export class ImageVideoInStories implements Module {
         }
       }
     } catch (e) {
-      console.error('searchImageVideoInStories()', `[instantgram] ${program.VERSION}`, e)
+      this.error(e as Error, program)
     }
     /* =====  End of search stories  ======*/
     return found

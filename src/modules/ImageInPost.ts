@@ -3,7 +3,7 @@ import { Found } from '../internal/Found'
 import { Program } from '../types'
 import { Module } from './Module'
 
-export class ImageInPost implements Module {
+export class ImageInPost extends Module {
   public getName(): string {
     return 'ImageInPost'
   }
@@ -65,7 +65,7 @@ export class ImageInPost implements Module {
         }
       }
     } catch (e) {
-      console.error('searchImageInPost()', `[instantgram] ${program.VERSION}`, e)
+      this.error(e as Error, program)
     }
     /* =====  End of Image visible in screen  ======*/
 

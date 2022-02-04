@@ -4,7 +4,7 @@ import { Program } from '../types'
 import { Module } from './Module'
 import { Found } from '../internal/Found'
 
-export class VideoInPage implements Module {
+export class VideoInPage extends Module {
   public getName(): string {
     return 'VideoInPage'
   }
@@ -96,7 +96,7 @@ export class VideoInPage implements Module {
       }
     }
     catch (e) {
-      console.error('searchVideoInPage()', `[instantgram] ${program.VERSION}`, e)
+      this.error(e as Error, program)
     }
     /* =====  End of Image visible in screen  ======*/
 

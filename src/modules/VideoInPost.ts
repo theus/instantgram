@@ -4,7 +4,7 @@ import isElementInViewport from '../helpers/isElementInViewport'
 import getOriginalVideoFromBlob from '../helpers/getOriginalVideoFromBlob'
 import { Found } from "../internal/Found"
 
-export class VideoInPost implements Module {
+export class VideoInPost extends Module {
   public getName(): string {
     return 'VideoInPost'
   }
@@ -74,7 +74,7 @@ export class VideoInPost implements Module {
       }
     }
     catch (e) {
-      console.error('searchVideoInPost()', `[instantgram] ${program.VERSION}`, e)
+      this.error(e as Error, program)
     }
     /* =====  End of Video visible in screen  ======*/
 
