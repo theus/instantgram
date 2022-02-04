@@ -1,4 +1,5 @@
 import isElementInViewport from '../helpers/isElementInViewport'
+import isProfileImage from '../helpers/isProfileImage'
 import { Module } from './Module'
 import { Program } from '../types'
 import { Found } from '../internal/Found'
@@ -17,56 +18,64 @@ export class ImageInPage extends Module {
     try {
       searchImage: { // eslint-disable-line no-labels
         if (document.querySelectorAll('#react-root > section').length === 1) {
-          const $container = document.querySelector('#react-root > section')
-          const $article = $container.querySelectorAll('div > div > div > article')
-
           let imageLink
-          const i = 0
-          for (let i=0; i<$article.length; i++) {
-            if (isElementInViewport($article[i])) {
 
-              /*
-              Single image
-              */
-              const singleImage = $article[i].querySelector('div > div > div > div > img') as HTMLImageElement
-              if (singleImage) {
-                imageLink = singleImage.src
-              }
+          const nodeListOfPostCards = document.querySelectorAll('article[role="presentation"]')
+          const arrOfPostsVisible: Element[] = []
 
-              break
+          nodeListOfPostCards.forEach($post => {
+            if (isElementInViewport($post)) {
+              arrOfPostsVisible.push($post)
             }
+          })
+
+          const imagesOfTheMostVisiblePost: HTMLImageElement[] = []
+
+          arrOfPostsVisible.forEach($post => {
+            const nodeListOfImgsInsidePost = $post.querySelectorAll('img')
+
+            nodeListOfImgsInsidePost.forEach($img => {
+              if (isElementInViewport($img) && !isProfileImage($img)) {
+                imagesOfTheMostVisiblePost.push($img)
+              }
+            })
+          })
+
+          // single post
+          if (imagesOfTheMostVisiblePost.length === 1) {
+            const $singleImage = imagesOfTheMostVisiblePost[0]
+
+            imageLink = $singleImage.src
+            found = true
           }
 
-          if (!imageLink) {
-            // Next
-            /*
-            Series image
-            */
-            const multiImage = Array.from($article[i].querySelectorAll('div > div > div > div > div > div > div > ul:first-child > li')).filter(el => (el.firstChild != null && el.classList.length > 0))
-            //console.log(multiImage.length)
-            if (multiImage) {
 
-              let _mediaEl
-              if (multiImage.length > 1) {
-                // this is the hack for instagram dont mess with me fuckers !
-                if (multiImage.length == 3) {
-                  _mediaEl = multiImage[Math.floor(multiImage.length / 2)]
-                } else if (multiImage.length == 2) {
-                  if ($article[i].querySelector('div > div > div > div > div > div').getElementsByClassName('coreSpriteLeftChevron').length == 1) {
-                    _mediaEl = multiImage.reverse().shift()
-                  } else {
-                    _mediaEl = multiImage.reverse().pop()
-                  }
-                  //console.log(_mediaEl.querySelector(program.mediaImageElExpression))
-                } else {
-                  //console.log(multiImage[Math.floor(multiImage.length / 2)])
-                }
+          // can be any image as all of them is inside the same post
+          const $divPresentation = imagesOfTheMostVisiblePost[0].closest('[role="presentation"]')
+          const arrOfControlButtonsInTheCarousel = Array.from($divPresentation.parentElement.querySelectorAll('button')) // buttons previous / next
 
-                _mediaEl = _mediaEl.querySelector(program.mediaImageElExpression)
-                const img = _mediaEl as HTMLImageElement
-                imageLink = img.src
+          const isBackButton = arrOfControlButtonsInTheCarousel.length === 1 && arrOfControlButtonsInTheCarousel[0].querySelector('.coreSpriteLeftChevron') !== null
+          const isNextButton = arrOfControlButtonsInTheCarousel.length === 1 && arrOfControlButtonsInTheCarousel[0].querySelector('.coreSpriteRightChevron') !== null
 
-              }
+
+          // album post
+          if (!found) {
+            // first image
+            if (arrOfControlButtonsInTheCarousel.length === 1 && isNextButton) {
+              imageLink = imagesOfTheMostVisiblePost[0].src
+              found = true
+            }
+
+            // last image
+            if (arrOfControlButtonsInTheCarousel.length === 1 && isBackButton) {
+              imageLink = imagesOfTheMostVisiblePost[1].src
+              found = true
+            }
+
+            // other images
+            if (imagesOfTheMostVisiblePost.length === 3) {
+              imageLink = imagesOfTheMostVisiblePost[1].src
+              found = true
             }
           }
 

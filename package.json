@@ -51,6 +51,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "tslib": "^2.3.1"
   }
 }
