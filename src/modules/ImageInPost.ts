@@ -22,37 +22,40 @@ export class ImageInPost extends Module {
         const $postCard = document.querySelector('article[role="presentation"]')
         const $divPresentation = $postCard.querySelector('div[role="presentation"]')
 
-        const imagesOfTheMostVisiblePost: CarouselImages = []
+        if ($divPresentation) {
+          const imagesOfTheMostVisiblePost: CarouselImages = []
 
-        const nodeListOfImgsInsidePost = $divPresentation.querySelectorAll('img')
+          const nodeListOfImgsInsidePost = $divPresentation.querySelectorAll('img')
 
-        nodeListOfImgsInsidePost.forEach($img => {
-          if (isElementInViewport($img) && !isProfileImage($img)) {
-            imagesOfTheMostVisiblePost.push($img)
+          nodeListOfImgsInsidePost.forEach($img => {
+            if (isElementInViewport($img) && !isProfileImage($img)) {
+              imagesOfTheMostVisiblePost.push($img)
+            }
+          })
+
+          // single post
+          if (imagesOfTheMostVisiblePost.length === 1) {
+            const $singleImage = imagesOfTheMostVisiblePost[0]
+
+            imageLink = $singleImage.src
+            found = true
           }
-        })
 
-        // single post
-        if (imagesOfTheMostVisiblePost.length === 1) {
-          const $singleImage = imagesOfTheMostVisiblePost[0]
+          if (!found) {
+            imageLink = getCurrentImageOfACarousel(imagesOfTheMostVisiblePost, $divPresentation)
+          }
 
-          imageLink = $singleImage.src
-          found = true
-        }
-
-        if (!found) {
-          imageLink = getCurrentImageOfACarousel(imagesOfTheMostVisiblePost, $divPresentation)
-        }
-
-        if (imageLink) {
-          new Found(program, this).image(imageLink)
-          found = true
-        } else {
-          program.context = {
-            hasMsg: true,
-            msg: 'index#program#screen@alert_dontFound'
+          if (imageLink) {
+            new Found(program, this).image(imageLink)
+            found = true
+          } else {
+            program.context = {
+              hasMsg: true,
+              msg: 'index#program#screen@alert_dontFound'
+            }
           }
         }
+
       }
     } catch (e) {
       this.error(e as Error, program)

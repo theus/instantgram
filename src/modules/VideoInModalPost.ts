@@ -9,6 +9,8 @@ export class VideoInModalPost extends Module {
     return 'VideoInModalPost'
   }
 
+  // test images with videos https://www.instagram.com/p/CZFtsdZuvln/
+
   execute(program: Program): boolean {
     let found = false
 
@@ -17,58 +19,26 @@ export class VideoInModalPost extends Module {
     =======================================*/
     try {
       searchVideo: { // eslint-disable-line no-labels
-        if (document.getElementsByTagName('article').length === 2) { // when instagram post is a modal
-          const modal = document.getElementsByTagName('article')[1]
+        if (program.regexPath.test(program.path)) { // verify user it's on post link
+          const arrOfVisibleVideos = Array.from(program.videos).filter(isElementInViewport)
 
-          // Multiple video
-          let _mediaEl
-          const liElements = Array.from(modal.querySelectorAll('div > div > div > div > div > div > div > ul:first-child > li')).filter(el => (el.firstChild != null && el.classList.length > 0))
-          if (liElements.length > 1) {
-            // this is the hack for instagram dont mess with me fuckers !
-            if (liElements.length == 3) {
-              _mediaEl = liElements[Math.floor(liElements.length / 2)]
-            } else if (liElements.length == 2) {
-              if (document.getElementsByClassName('coreSpriteLeftChevron').length == 1) {
-                _mediaEl = liElements.reverse().shift()
+          if (arrOfVisibleVideos.length) {
+            const $firstVideo = arrOfVisibleVideos[0]
+
+            let videoLink = $firstVideo.src
+            const foundInstance = new Found(program, this)
+
+            if (videoLink) {
+              if (videoLink.indexOf('blob:') !== -1) {
+                videoLink = getOriginalVideoFromBlob($firstVideo)
+                foundInstance.video(videoLink)
+                found = true
               } else {
-                _mediaEl = liElements.reverse().pop()
-              }
-            } else {
-              //console.log(liElements[Math.floor(liElements.length / 2)]);
-            }
-
-            _mediaEl = _mediaEl.querySelectorAll('video')
-
-          } else {
-            // Single video
-            _mediaEl = modal.querySelectorAll('video')
-          }
-
-          //console.log(_mediaEl)
-
-          // last stage open video ?
-          for (let i = 0; i < _mediaEl.length; i++) {
-            //console.log(isElementInViewport(_mediaEl[i]))
-
-            if (isElementInViewport(_mediaEl[i])) { // verify if is in viewport
-              let videoLink = _mediaEl[i].src
-              const foundInstance = new Found(program, this)
-
-              if (videoLink) {
-                if (videoLink.indexOf('blob:') !== -1) {
-                  videoLink = getOriginalVideoFromBlob(_mediaEl[i])
-                  foundInstance.video(videoLink)
-                  break searchVideo // eslint-disable-line no-labels
-                } else {
-                  foundInstance.video(videoLink)
-                  found = true
-                }
+                foundInstance.video(videoLink)
+                found = true
               }
             }
           }
-
-          // if found the video stop searching
-          break searchVideo // eslint-disable-line no-labels
 
         }
       }
