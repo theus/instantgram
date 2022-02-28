@@ -1,5 +1,5 @@
 export default function getOriginalVideoFromBlob(videoEl: HTMLVideoElement): string|null {
-  const instanceKey = Object.keys(videoEl).find(key => key.includes('Instance'))
+  const instanceKey = Object.keys(videoEl).find(key => key.includes('Instance') || key.includes('Fiber'))
   const $react = videoEl[instanceKey]
   const videoLink = $react.return.memoizedProps.fallbackSrc
 
