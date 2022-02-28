@@ -37,7 +37,7 @@
     "eslint-webpack-plugin": "^2.5.1",
     "handlebars": "^4.7.6",
     "html-loader": "^0.5.5",
-    "lodash-es": "^4.17.10",
+    "lodash-es": "^4.17.21",
     "metalsmith": "^2.1.0",
     "metalsmith-define": "^2.0.1",
     "metalsmith-layouts": "^1.6.5",
