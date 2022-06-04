@@ -1,5 +1,5 @@
-# [instantgram] v4.0.7
-![GitHub release](https://img.shields.io/badge/release-v4.0.7-blue)
+# [instantgram] v5.0.0
+![GitHub release](https://img.shields.io/badge/release-v5.0.0-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -38,6 +38,8 @@ Also it has now support for multiple images videos in any site feed or post with
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+- v5.0.0 - Rewrite [instantgram] to work with the last chances in Instagram
+- v4.0.8 - Fix stories (thanks to @mklaber)
 - v4.0.7 - Fix grabbing some videos / posts (thanks to @mklaber)
 - v4.0.5 - Fix loading of videos from story (and maybe posts) [#50](https://github.com/theus/instantgram/issues/50), [#48](https://github.com/theus/instantgram/issues/48) (thanks [@joe-wee](https://github.com/joe-wee)!)
 - v4.0.4 - Fix open blob video files
@@ -49,6 +51,5 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 - v2.3.0 - [instangram] now supports localization, both app and website. Initially it has en-US and pt-BR. You can help us translate [instantgram] for your language! Cool? Read [contributing](CONTRIBUTING.md) for more information.
 - v2.2.0 - [instantgram] now supports video too! :movie_camera:
 - After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may be using a version before v2.0.0.
-
 
 [1]:http://theus.github.io/instantgram
