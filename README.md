@@ -1,5 +1,5 @@
-# [instantgram] v5.0.0
-![GitHub release](https://img.shields.io/badge/release-v5.0.0-blue)
+# [instantgram] v5.0.1
+![GitHub release](https://img.shields.io/badge/release-v5.0.1-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -38,6 +38,7 @@ Also it has now support for multiple images videos in any site feed or post with
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+- v5.0.1 - Fix open correctly video on posts with more than 1 (thanks to @mklaber)
 - v5.0.0 - Rewrite [instantgram] to work with the last chances in Instagram
 - v4.0.8 - Fix stories (thanks to @mklaber)
 - v4.0.7 - Fix grabbing some videos / posts (thanks to @mklaber)
