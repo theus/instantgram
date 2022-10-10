@@ -1,5 +1,6 @@
-# [instantgram] v5.0.1
-![GitHub release](https://img.shields.io/badge/release-v5.0.1-blue)
+# [instantgram] v5.0.2
+
+![GitHub release](https://img.shields.io/badge/release-v5.0.2-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -17,15 +18,16 @@ Also it has now support for multiple images videos in any site feed or post with
 
 ## Compatibility
 
-|       Browser         |     Compatible?    |
-| --------------------- | -------------------|
+| Browser               | Compatible?        |
+| --------------------- | ------------------ |
 | Google Chrome         | :white_check_mark: |
-| Mozilla Firefox**     | :warning:          |
+| Mozilla Firefox\*\*   | :warning:          |
 | Internet Explorer 11  | :white_check_mark: |
 | Edge on chromium >=80 | :white_check_mark: |
-| Edge*                 | :warning:          |
-*_apparently Edge doesn't allow you to drag a button to the bookmark bar_
-**_apparently Firefox don't allow drag a bookmarklet (link with `javascript:)` to bookmarkbar_
+| Edge\*                | :warning:          |
+
+\*_apparently Edge doesn't allow you to drag a button to the bookmark bar_
+\*\*_apparently Firefox don't allow drag a bookmarklet (link with `javascript:)` to bookmarkbar_
 
 ## Roadmap
 
@@ -38,6 +40,8 @@ Also it has now support for multiple images videos in any site feed or post with
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
+
+- v5.0.2 - Fix open correctly image in carousel
 - v5.0.1 - Fix open correctly video on posts with more than 1 (thanks to @mklaber)
 - v5.0.0 - Rewrite [instantgram] to work with the last chances in Instagram
 - v4.0.8 - Fix stories (thanks to @mklaber)
@@ -53,4 +57,4 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 - v2.2.0 - [instantgram] now supports video too! :movie_camera:
 - After v2.0.0, [instantgram] has your data saved in `localStorage` and can be accessed entering `localStorage.getItem('instantgram')` in console inside instagram.com. If you can't access this item, you may be using a version before v2.0.0.
 
-[1]:http://theus.github.io/instantgram
+[1]: http://theus.github.io/instantgram
