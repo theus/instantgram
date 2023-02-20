@@ -1,6 +1,6 @@
-# [instantgram] v5.0.4
+# [instantgram] v5.0.5
 
-![GitHub release](https://img.shields.io/badge/release-v5.0.4-blue)
+![GitHub release](https://img.shields.io/badge/release-v5.0.5-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
@@ -41,6 +41,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information. :heart:
 
 ## Changelog
 
+-   v5.0.5 - Fix carousel post always getting videos [#79](https://github.com/theus/instantgram/issues/79)
 -   v5.0.4 - Fix video downloads [#76](https://github.com/theus/instantgram/issues/76) (thanks to [@ghnp5](https://github.com/ghnp5))
 -   v5.0.3 - Fix opening stories (videos) [#75](https://github.com/theus/instantgram/issues/75) (thanks to [@mklaber](https://github.com/mklaber) 🎉👑)
 -   v5.0.2 - Fix open correctly image in carousel
