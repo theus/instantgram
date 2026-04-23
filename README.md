@@ -1,13 +1,13 @@
-# [instantgram] v5.1.1
+# [instantgram] v5.2.1
 
-![GitHub release](https://img.shields.io/badge/release-v5.1.1-blue)
+![GitHub release](https://img.shields.io/badge/release-v5.2.1-blue)
 
 ![badge](https://img.shields.io/badge/for-instagram-yellow.svg?style=flat-square)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
 [Versão em Português =)](http://theus.github.io/instantgram/lang/pt-br)
 
-[instantgram] is a bookmarklet with the purpose of downloading Instagram images. It is tiny, simple, and doesn't require extensions or downloads. Just access [this link][1] and drag the [instantgram] button to the bookmark bar of your browser, navigate to instagram.com (web), open an Instagram post (photo) and click on the bookmarklet. That's all it takes!
+[instantgram] is a bookmarklet with the purpose of opening the source image or video for the Instagram media you are currently looking at. It is tiny, simple, and doesn't require extensions or downloads. Just access [this link][1] and drag the [instantgram] button to the bookmark bar of your browser, navigate to instagram.com (web), open a post, reel, or story, and click on the bookmarklet. That's all it takes!
 
 ### [:arrow_right: Bookmarklet][1]
 

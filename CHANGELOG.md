@@ -1,5 +1,20 @@
 # @theus/instantgram-core
 
+## 5.2.1
+
+### Patch Changes
+
+- Fixed video URLs that were opening Instagram CDN byte-range fragments instead of the canonical file.
+- Stopped rewriting video hosts to the old generic CDN domain so Safari keeps the valid regional asset URL.
+
+## 5.2.0
+
+### Minor Changes
+
+- Rewrote the bookmarklet media picker to target the active visible item instead of the first matching Instagram node.
+- Added permalink and page-meta fallback resolution so posts, reels, and stories can all open the correct image or video source.
+- Moved the published bookmarklet payload into a readable source file plus loader so every language page stays in sync.
+
 ## 5.1.1
 
 ### Patch Changes
