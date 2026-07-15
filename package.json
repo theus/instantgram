@@ -1,0 +1,8 @@
+{
+  "name": "instantgram",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/sync-bookmarklet.mjs",
+    "test": "node --test"
+  }
+}

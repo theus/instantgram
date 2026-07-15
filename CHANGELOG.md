@@ -1,5 +1,69 @@
 # @theus/instantgram-core
 
+## 5.2.8
+
+### Patch Changes
+
+- Reduce the Safari bookmark URL from 6,443 to under 4,500 characters by encoding only URL-breaking characters, while preserving the exact tested JavaScript source.
+
+## 5.2.7
+
+### Patch Changes
+
+- Make the installed `javascript:` URL evaluate to `undefined` so Safari runs the async bookmarklet without treating its Promise as a navigation result.
+
+## 5.2.6
+
+### Patch Changes
+
+- Select the centered media across images and videos so adjacent feed videos no longer override the current image or carousel slide.
+- Recover blob-backed reel videos from Instagram's loaded MP4 resources while excluding audio-only DASH tracks and removing byte-range parameters.
+- Parse Open Graph metadata regardless of attribute order and add automated behavior and publishing-consistency tests.
+
+## 5.2.5
+
+### Patch Changes
+
+- Split video-first detection from media type selection so reel and story stills can fall back to image metadata or visible image candidates when no video URL exists.
+
+## 5.2.4
+
+### Patch Changes
+
+- Made story pages try video metadata before image metadata so story URLs do not resolve to the account profile image.
+- Ignored profile-picture CDN URL patterns from story `og:image` fallbacks and tightened avatar filtering for small square visible images.
+
+## 5.2.3
+
+### Patch Changes
+
+- Preferred permalink metadata before DOM image candidates so Instagram post images open the canonical source instead of a downscaled rendered candidate.
+- Treated reel pages as video-first even when the visible video element is not discoverable, avoiding profile images in the fallback path.
+- Filtered avatar/profile-like images out of the visible image picker unless they are inside a post, reel, TV, or story link.
+
+## 5.2.2
+
+### Patch Changes
+
+- Wrote the 5.2.2 bookmarklet directly into every published language page so installs do not depend on the runtime loader.
+- Preferred the largest available image candidate from `srcset`, tightened Instagram host validation, and severed popup `opener` access before navigating to media.
+- Removed dead Universal Analytics markup, broken Instagram Brand icon links, stale generated page metadata, and remaining insecure project links.
+
+## 5.2.1
+
+### Patch Changes
+
+- Fixed video URLs that were opening Instagram CDN byte-range fragments instead of the canonical file.
+- Stopped rewriting video hosts to the old generic CDN domain so Safari keeps the valid regional asset URL.
+
+## 5.2.0
+
+### Minor Changes
+
+- Rewrote the bookmarklet media picker to target the active visible item instead of the first matching Instagram node.
+- Added permalink and page-meta fallback resolution so posts, reels, and stories can all open the correct image or video source.
+- Moved the published bookmarklet payload into a readable source file plus loader so every language page stays in sync.
+
 ## 5.1.1
 
 ### Patch Changes
